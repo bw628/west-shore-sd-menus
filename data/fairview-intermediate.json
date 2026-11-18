@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T16:16:54.890436Z",
+  "generated_at": "2026-11-18T16:28:16.526694Z",
   "school": "Fairview Intermediate School",
   "slug": "fairview-intermediate",
   "weeks": [
@@ -109,7 +109,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 1.1,
               "mg_potassium": 30.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 muffin"
             },
             "Egg & Cheese Croissant": {
               "calories": 210.0,
@@ -127,7 +128,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 1.4,
               "mg_potassium": 130.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 sandwich"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -145,7 +147,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             }
           },
           "daily_serve": {
@@ -165,7 +168,8 @@
               "mg_calcium": 110.0,
               "mg_iron": 2.7,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 8.0
+              "mg_vitamin_c": 8.0,
+              "serving_size": "1 bowl"
             },
             "Trix Cereal": {
               "calories": 110.0,
@@ -183,7 +187,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.3,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Lucky Charms Cereal": {
               "calories": 110.0,
@@ -201,7 +206,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.8,
               "mg_potassium": 75.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 bowl"
             },
             "Cinnamon Toast Crunch": {
               "calories": 110.0,
@@ -219,7 +225,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.6,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Frosted Corn Flakes Cereal": {
               "calories": 110.0,
@@ -237,7 +244,8 @@
               "mg_calcium": 80.0,
               "mg_iron": 8.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 4.0
+              "mg_vitamin_c": 4.0,
+              "serving_size": "1 bowl"
             },
             "Golden Grahams Cereal": {
               "calories": 110.0,
@@ -255,7 +263,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 20.0
+              "mg_vitamin_c": 20.0,
+              "serving_size": "1 bowl"
             },
             "Honey Cheerios Cereal": {
               "calories": 210.0,
@@ -273,7 +282,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 5.6,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 13.0
+              "mg_vitamin_c": 13.0,
+              "serving_size": "1 bowl"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -291,7 +301,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             }
           },
           "fruit": {
@@ -310,7 +321,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             },
             "Grape Juice": {
               "calories": 90.0,
@@ -328,7 +340,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.5,
               "mg_potassium": 70.0,
-              "mg_vitamin_c": 35.0
+              "mg_vitamin_c": 35.0,
+              "serving_size": "1 each"
             },
             "Diced Peaches": {
               "calories": 50.0,
@@ -345,7 +358,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
-              "mg_potassium": 210.0
+              "mg_potassium": 210.0,
+              "serving_size": "0.5 cups"
             }
           },
           "milk": {
@@ -364,7 +378,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -380,7 +395,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -397,7 +413,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -414,7 +431,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -431,7 +449,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         },
@@ -453,7 +472,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 4.4,
               "mg_potassium": 420.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "2 each"
             }
           },
           "daily_serve": {
@@ -473,7 +493,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 1.8,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 package"
             }
           },
           "express": {
@@ -493,7 +514,8 @@
               "mg_calcium": 50.0,
               "mg_iron": 2.3,
               "mg_potassium": 270.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Dinner Roll": {
               "calories": 160.0,
@@ -511,7 +533,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 1.6,
               "mg_potassium": 100.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Pretzel, Yogurt & Cheese Pack": {
               "calories": 300.0,
@@ -529,7 +552,8 @@
               "mg_calcium": 360.0,
               "mg_iron": 2.1,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "1 package"
             }
           },
           "vegetable": {
@@ -549,7 +573,8 @@
               "mg_calcium": 60.0,
               "mg_iron": 2.2,
               "mg_potassium": 640.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "0.5 cups"
             },
             "Baby Carrots": {
               "calories": 25.0,
@@ -566,7 +591,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.6,
               "mg_potassium": 170.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "0.5 cups"
             }
           },
           "fruit": {
@@ -585,7 +611,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.1,
               "mg_potassium": 65.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "4 wedge"
             },
             "Fresh Orange Wedges": {
               "calories": 45.0,
@@ -602,7 +629,8 @@
               "mg_calcium": 40.0,
               "mg_iron": 0.1,
               "mg_potassium": 180.0,
-              "mg_vitamin_c": 53.0
+              "mg_vitamin_c": 53.0,
+              "serving_size": "8 wedge"
             },
             "Fresh Apple Slices": {
               "calories": 45.0,
@@ -619,7 +647,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 90.0,
-              "mg_vitamin_c": 58.0
+              "mg_vitamin_c": 58.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -638,7 +667,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -654,7 +684,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -671,7 +702,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -688,7 +720,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -705,7 +738,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         }
@@ -791,7 +825,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 1.6,
               "mg_potassium": 160.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Trix Cereal Bar": {
               "calories": 150.0,
@@ -809,7 +844,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 1.6,
               "mg_potassium": 70.0,
-              "mg_vitamin_c": 4.0
+              "mg_vitamin_c": 4.0,
+              "serving_size": "1 each"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -827,7 +863,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             }
           },
           "daily_serve": {
@@ -847,7 +884,8 @@
               "mg_calcium": 110.0,
               "mg_iron": 2.7,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 8.0
+              "mg_vitamin_c": 8.0,
+              "serving_size": "1 bowl"
             },
             "Trix Cereal": {
               "calories": 110.0,
@@ -865,7 +903,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.3,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Lucky Charms Cereal": {
               "calories": 110.0,
@@ -883,7 +922,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.8,
               "mg_potassium": 75.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 bowl"
             },
             "Cinnamon Toast Crunch": {
               "calories": 110.0,
@@ -901,7 +941,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.6,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Frosted Corn Flakes Cereal": {
               "calories": 110.0,
@@ -919,7 +960,8 @@
               "mg_calcium": 80.0,
               "mg_iron": 8.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 4.0
+              "mg_vitamin_c": 4.0,
+              "serving_size": "1 bowl"
             },
             "Golden Grahams Cereal": {
               "calories": 110.0,
@@ -937,7 +979,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 20.0
+              "mg_vitamin_c": 20.0,
+              "serving_size": "1 bowl"
             },
             "Honey Cheerios Cereal": {
               "calories": 210.0,
@@ -955,7 +998,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 5.6,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 13.0
+              "mg_vitamin_c": 13.0,
+              "serving_size": "1 bowl"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -973,7 +1017,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             }
           },
           "fruit": {
@@ -993,7 +1038,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
               "mg_potassium": 170.0,
-              "mg_vitamin_c": 36.0
+              "mg_vitamin_c": 36.0,
+              "serving_size": "1 each"
             },
             "Applesauce": {
               "calories": 50.0,
@@ -1010,7 +1056,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             },
             "Diced Peaches": {
               "calories": 50.0,
@@ -1027,7 +1074,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
-              "mg_potassium": 210.0
+              "mg_potassium": 210.0,
+              "serving_size": "0.5 cups"
             }
           },
           "milk": {
@@ -1046,7 +1094,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -1062,7 +1111,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -1079,7 +1129,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -1096,7 +1147,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -1113,7 +1165,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         },
@@ -1135,7 +1188,8 @@
               "mg_calcium": 130.0,
               "mg_iron": 2.7,
               "mg_potassium": 470.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 sandwich"
             }
           },
           "daily_serve": {
@@ -1155,7 +1209,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 1.8,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 package"
             }
           },
           "express": {
@@ -1175,7 +1230,8 @@
               "mg_calcium": 50.0,
               "mg_iron": 2.3,
               "mg_potassium": 270.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Dinner Roll": {
               "calories": 160.0,
@@ -1193,7 +1249,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 1.6,
               "mg_potassium": 100.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Pretzel, Yogurt & Cheese Pack": {
               "calories": 300.0,
@@ -1211,7 +1268,8 @@
               "mg_calcium": 360.0,
               "mg_iron": 2.1,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "1 package"
             }
           },
           "vegetable": {
@@ -1231,7 +1289,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
               "mg_potassium": 220.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "0.5 cups"
             },
             "Fresh Cucumber Slices": {
               "calories": 10.0,
@@ -1248,7 +1307,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "0.5 cups"
             }
           },
           "fruit": {
@@ -1267,7 +1327,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.1,
               "mg_potassium": 65.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "4 wedge"
             },
             "Fresh Orange Wedges": {
               "calories": 45.0,
@@ -1284,7 +1345,8 @@
               "mg_calcium": 40.0,
               "mg_iron": 0.1,
               "mg_potassium": 180.0,
-              "mg_vitamin_c": 53.0
+              "mg_vitamin_c": 53.0,
+              "serving_size": "8 wedge"
             },
             "Fresh Apple Slices": {
               "calories": 45.0,
@@ -1301,7 +1363,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 90.0,
-              "mg_vitamin_c": 58.0
+              "mg_vitamin_c": 58.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -1320,7 +1383,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -1336,7 +1400,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -1353,7 +1418,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -1370,7 +1436,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -1387,7 +1454,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         }
@@ -1473,7 +1541,8 @@
               "mg_calcium": 120.0,
               "mg_iron": 1.5,
               "mg_potassium": 360.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "4 piece"
             },
             "Cocoa Peanut Butter Dip": {
               "calories": 120.0,
@@ -1491,7 +1560,8 @@
               "mg_calcium": 80.0,
               "mg_iron": 0.5,
               "mg_potassium": 115.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "2 fl oz"
             },
             "Sausage Egg Muffin": {
               "calories": 280.0,
@@ -1509,7 +1579,8 @@
               "mg_calcium": 120.0,
               "mg_iron": 2.5,
               "mg_potassium": 250.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 sandwich"
             }
           },
           "daily_serve": {
@@ -1529,7 +1600,8 @@
               "mg_calcium": 110.0,
               "mg_iron": 2.7,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 8.0
+              "mg_vitamin_c": 8.0,
+              "serving_size": "1 bowl"
             },
             "Trix Cereal": {
               "calories": 110.0,
@@ -1547,7 +1619,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.3,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Cinnamon Toast Crunch": {
               "calories": 110.0,
@@ -1565,7 +1638,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.6,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Frosted Corn Flakes Cereal": {
               "calories": 110.0,
@@ -1583,7 +1657,8 @@
               "mg_calcium": 80.0,
               "mg_iron": 8.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 4.0
+              "mg_vitamin_c": 4.0,
+              "serving_size": "1 bowl"
             },
             "Lucky Charms Cereal": {
               "calories": 110.0,
@@ -1601,7 +1676,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.8,
               "mg_potassium": 75.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 bowl"
             },
             "Golden Grahams Cereal": {
               "calories": 110.0,
@@ -1619,7 +1695,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 20.0
+              "mg_vitamin_c": 20.0,
+              "serving_size": "1 bowl"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -1637,7 +1714,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             },
             "Honey Cheerios Cereal": {
               "calories": 210.0,
@@ -1655,7 +1733,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 5.6,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 13.0
+              "mg_vitamin_c": 13.0,
+              "serving_size": "1 bowl"
             }
           },
           "fruit": {
@@ -1675,7 +1754,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
               "mg_potassium": 170.0,
-              "mg_vitamin_c": 36.0
+              "mg_vitamin_c": 36.0,
+              "serving_size": "1 each"
             },
             "Mixed Berry Applesauce": {
               "calories": 50.0,
@@ -1692,7 +1772,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             },
             "Applesauce": {
               "calories": 50.0,
@@ -1709,7 +1790,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -1728,7 +1810,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -1744,7 +1827,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -1761,7 +1845,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -1778,7 +1863,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -1795,7 +1881,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         },
@@ -1816,7 +1903,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 0.0,
               "mg_iron": 0.3,
-              "mg_potassium": 490.0
+              "mg_potassium": 490.0,
+              "serving_size": "3 ozw"
             },
             "Poultry Gravy": {
               "calories": 2240.0,
@@ -1834,7 +1922,8 @@
               "mg_calcium": 790.0,
               "mg_iron": 5.3,
               "mg_potassium": 2030.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 gallons"
             },
             "Cornbread Stuffing": {
               "calories": 210.0,
@@ -1852,7 +1941,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 1.4,
               "mg_potassium": 380.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "0.5 cups"
             },
             "Vanilla Ice Cream": {
               "calories": 100.0,
@@ -1870,7 +1960,8 @@
               "mg_calcium": 120.0,
               "mg_iron": 0.1,
               "mg_potassium": 110.0,
-              "mg_vitamin_c": 1.0
+              "mg_vitamin_c": 1.0,
+              "serving_size": "1 each"
             }
           },
           "daily_serve": {
@@ -1890,7 +1981,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 1.8,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 package"
             }
           },
           "vegetable": {
@@ -1910,7 +2002,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 0.3,
               "mg_potassium": 180.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "0.5 cups"
             },
             "Mashed Potatoes": {
               "calories": 90.0,
@@ -1928,7 +2021,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
               "mg_potassium": 330.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "0.5 cups"
             },
             "Baby Carrots": {
               "calories": 25.0,
@@ -1945,7 +2039,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.6,
               "mg_potassium": 170.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "0.5 cups"
             }
           },
           "fruit": {
@@ -1964,7 +2059,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.1,
               "mg_potassium": 65.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "4 wedge"
             },
             "Fresh Orange Wedges": {
               "calories": 45.0,
@@ -1981,7 +2077,8 @@
               "mg_calcium": 40.0,
               "mg_iron": 0.1,
               "mg_potassium": 180.0,
-              "mg_vitamin_c": 53.0
+              "mg_vitamin_c": 53.0,
+              "serving_size": "8 wedge"
             },
             "Fresh Apple Slices": {
               "calories": 45.0,
@@ -1998,7 +2095,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 90.0,
-              "mg_vitamin_c": 58.0
+              "mg_vitamin_c": 58.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -2017,7 +2115,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -2033,7 +2132,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -2050,7 +2150,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -2067,7 +2168,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -2084,7 +2186,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         }
@@ -2170,7 +2273,8 @@
               "mg_calcium": 40.0,
               "mg_iron": 2.0,
               "mg_potassium": 150.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 pouch"
             },
             "Egg & Cheese Breakfast Tacos": {
               "calories": 280.0,
@@ -2188,7 +2292,8 @@
               "mg_calcium": 210.0,
               "mg_iron": 2.5,
               "mg_potassium": 200.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "2 each"
             }
           },
           "daily_serve": {
@@ -2208,7 +2313,8 @@
               "mg_calcium": 110.0,
               "mg_iron": 2.7,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 8.0
+              "mg_vitamin_c": 8.0,
+              "serving_size": "1 bowl"
             },
             "Trix Cereal": {
               "calories": 110.0,
@@ -2226,7 +2332,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.3,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Cinnamon Toast Crunch": {
               "calories": 110.0,
@@ -2244,7 +2351,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.6,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Frosted Corn Flakes Cereal": {
               "calories": 110.0,
@@ -2262,7 +2370,8 @@
               "mg_calcium": 80.0,
               "mg_iron": 8.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 4.0
+              "mg_vitamin_c": 4.0,
+              "serving_size": "1 bowl"
             },
             "Lucky Charms Cereal": {
               "calories": 110.0,
@@ -2280,7 +2389,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.8,
               "mg_potassium": 75.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 bowl"
             },
             "Golden Grahams Cereal": {
               "calories": 110.0,
@@ -2298,7 +2408,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 20.0
+              "mg_vitamin_c": 20.0,
+              "serving_size": "1 bowl"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -2316,7 +2427,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             },
             "Honey Cheerios Cereal": {
               "calories": 210.0,
@@ -2334,7 +2446,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 5.6,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 13.0
+              "mg_vitamin_c": 13.0,
+              "serving_size": "1 bowl"
             }
           },
           "fruit": {
@@ -2354,7 +2467,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
               "mg_potassium": 170.0,
-              "mg_vitamin_c": 36.0
+              "mg_vitamin_c": 36.0,
+              "serving_size": "1 each"
             },
             "Applesauce": {
               "calories": 50.0,
@@ -2371,7 +2485,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             },
             "Mixed Berry Applesauce": {
               "calories": 50.0,
@@ -2388,7 +2503,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -2407,7 +2523,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -2423,7 +2540,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -2440,7 +2558,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -2457,7 +2576,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -2474,7 +2594,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         },
@@ -2496,7 +2617,8 @@
               "mg_calcium": 30.0,
               "mg_iron": 2.1,
               "mg_potassium": 280.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 serving"
             },
             "Biscuit": {
               "calories": 100.0,
@@ -2513,7 +2635,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 80.0,
               "mg_iron": 0.6,
-              "mg_potassium": 110.0
+              "mg_potassium": 110.0,
+              "serving_size": "1 each"
             }
           },
           "daily_serve": {
@@ -2533,7 +2656,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 1.8,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 package"
             }
           },
           "express": {
@@ -2553,7 +2677,8 @@
               "mg_calcium": 50.0,
               "mg_iron": 2.3,
               "mg_potassium": 270.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Dinner Roll": {
               "calories": 160.0,
@@ -2571,7 +2696,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 1.6,
               "mg_potassium": 100.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Pretzel, Yogurt & Cheese Pack": {
               "calories": 300.0,
@@ -2589,7 +2715,8 @@
               "mg_calcium": 360.0,
               "mg_iron": 2.1,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "1 package"
             }
           },
           "vegetable": {
@@ -2608,7 +2735,8 @@
               "mcg_vitamin_d": 0.4,
               "mg_calcium": 10.0,
               "mg_iron": 0.5,
-              "mg_potassium": 230.0
+              "mg_potassium": 230.0,
+              "serving_size": "0.5 cups"
             },
             "Fresh Broccoli": {
               "calories": 10.0,
@@ -2625,7 +2753,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 30.0
+              "mg_vitamin_c": 30.0,
+              "serving_size": "0.5 cups"
             }
           },
           "fruit": {
@@ -2644,7 +2773,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.1,
               "mg_potassium": 65.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "4 wedge"
             },
             "Fresh Orange Wedges": {
               "calories": 45.0,
@@ -2661,7 +2791,8 @@
               "mg_calcium": 40.0,
               "mg_iron": 0.1,
               "mg_potassium": 180.0,
-              "mg_vitamin_c": 53.0
+              "mg_vitamin_c": 53.0,
+              "serving_size": "8 wedge"
             },
             "Fresh Apple Slices": {
               "calories": 45.0,
@@ -2678,7 +2809,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 90.0,
-              "mg_vitamin_c": 58.0
+              "mg_vitamin_c": 58.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -2697,7 +2829,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -2713,7 +2846,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -2730,7 +2864,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -2747,7 +2882,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -2764,7 +2900,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         }
@@ -2849,7 +2986,8 @@
               "mcg_vitamin_d": 0.1,
               "mg_calcium": 10.0,
               "mg_iron": 1.1,
-              "mg_potassium": 350.0
+              "mg_potassium": 350.0,
+              "serving_size": "5 each"
             },
             "Cinnamon Breakfast Round": {
               "calories": 240.0,
@@ -2867,7 +3005,8 @@
               "mg_calcium": 30.0,
               "mg_iron": 1.6,
               "mg_potassium": 150.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             }
           },
           "daily_serve": {
@@ -2887,7 +3026,8 @@
               "mg_calcium": 110.0,
               "mg_iron": 2.7,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 8.0
+              "mg_vitamin_c": 8.0,
+              "serving_size": "1 bowl"
             },
             "Trix Cereal": {
               "calories": 110.0,
@@ -2905,7 +3045,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.3,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Cinnamon Toast Crunch": {
               "calories": 110.0,
@@ -2923,7 +3064,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.6,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Frosted Corn Flakes Cereal": {
               "calories": 110.0,
@@ -2941,7 +3083,8 @@
               "mg_calcium": 80.0,
               "mg_iron": 8.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 4.0
+              "mg_vitamin_c": 4.0,
+              "serving_size": "1 bowl"
             },
             "Lucky Charms Cereal": {
               "calories": 110.0,
@@ -2959,7 +3102,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.8,
               "mg_potassium": 75.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 bowl"
             },
             "Golden Grahams Cereal": {
               "calories": 110.0,
@@ -2977,7 +3121,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 20.0
+              "mg_vitamin_c": 20.0,
+              "serving_size": "1 bowl"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -2995,7 +3140,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             },
             "Honey Cheerios Cereal": {
               "calories": 210.0,
@@ -3013,7 +3159,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 5.6,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 13.0
+              "mg_vitamin_c": 13.0,
+              "serving_size": "1 bowl"
             }
           },
           "fruit": {
@@ -3033,7 +3180,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
               "mg_potassium": 160.0,
-              "mg_vitamin_c": 36.0
+              "mg_vitamin_c": 36.0,
+              "serving_size": "1 each"
             },
             "Applesauce": {
               "calories": 50.0,
@@ -3050,7 +3198,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             },
             "Mixed Berry Applesauce": {
               "calories": 50.0,
@@ -3067,7 +3216,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -3086,7 +3236,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -3102,7 +3253,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -3119,7 +3271,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -3136,7 +3289,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -3153,7 +3307,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         },
@@ -3174,7 +3329,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 350.0,
               "mg_iron": 2.8,
-              "mg_potassium": 360.0
+              "mg_potassium": 360.0,
+              "serving_size": "0.125 cut"
             },
             "Pepperoni Pizza": {
               "calories": 430.0,
@@ -3192,7 +3348,8 @@
               "mg_calcium": 340.0,
               "mg_iron": 2.5,
               "mg_potassium": 490.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "0.125 cut"
             }
           },
           "daily_serve": {
@@ -3212,7 +3369,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 1.8,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 package"
             }
           },
           "express": {
@@ -3232,7 +3390,8 @@
               "mg_calcium": 50.0,
               "mg_iron": 2.3,
               "mg_potassium": 270.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Dinner Roll": {
               "calories": 160.0,
@@ -3250,7 +3409,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 1.6,
               "mg_potassium": 100.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Pretzel, Yogurt & Cheese Pack": {
               "calories": 300.0,
@@ -3268,7 +3428,8 @@
               "mg_calcium": 360.0,
               "mg_iron": 2.1,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "1 package"
             }
           },
           "vegetable": {
@@ -3287,7 +3448,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 0.2,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 64.0
+              "mg_vitamin_c": 64.0,
+              "serving_size": "0.5 cups"
             },
             "Fresh Cucumber Slices": {
               "calories": 10.0,
@@ -3304,7 +3466,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "0.5 cups"
             }
           },
           "fruit": {
@@ -3323,7 +3486,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.1,
               "mg_potassium": 130.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 each"
             },
             "Fresh Orange Wedges": {
               "calories": 45.0,
@@ -3340,7 +3504,8 @@
               "mg_calcium": 40.0,
               "mg_iron": 0.1,
               "mg_potassium": 180.0,
-              "mg_vitamin_c": 53.0
+              "mg_vitamin_c": 53.0,
+              "serving_size": "8 wedge"
             },
             "Fresh Apple Slices": {
               "calories": 45.0,
@@ -3357,7 +3522,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 90.0,
-              "mg_vitamin_c": 58.0
+              "mg_vitamin_c": 58.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -3376,7 +3542,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -3392,7 +3559,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -3409,7 +3577,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -3426,7 +3595,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -3443,7 +3613,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         }
@@ -3573,7 +3744,8 @@
               "mg_calcium": 180.0,
               "mg_iron": 2.4,
               "mg_potassium": 310.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 sandwich"
             },
             "Vanilla Confetti  Snack'n Waffles": {
               "calories": 250.0,
@@ -3590,7 +3762,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 20.0,
-              "mg_potassium": 5.0
+              "mg_potassium": 5.0,
+              "serving_size": "1 each"
             }
           },
           "daily_serve": {
@@ -3610,7 +3783,8 @@
               "mg_calcium": 110.0,
               "mg_iron": 2.7,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 8.0
+              "mg_vitamin_c": 8.0,
+              "serving_size": "1 bowl"
             },
             "Trix Cereal": {
               "calories": 110.0,
@@ -3628,7 +3802,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.3,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Lucky Charms Cereal": {
               "calories": 110.0,
@@ -3646,7 +3821,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.8,
               "mg_potassium": 75.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 bowl"
             },
             "Cinnamon Toast Crunch": {
               "calories": 110.0,
@@ -3664,7 +3840,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.6,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Frosted Corn Flakes Cereal": {
               "calories": 110.0,
@@ -3682,7 +3859,8 @@
               "mg_calcium": 80.0,
               "mg_iron": 8.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 4.0
+              "mg_vitamin_c": 4.0,
+              "serving_size": "1 bowl"
             },
             "Golden Grahams Cereal": {
               "calories": 110.0,
@@ -3700,7 +3878,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 20.0
+              "mg_vitamin_c": 20.0,
+              "serving_size": "1 bowl"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -3718,7 +3897,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             },
             "Honey Cheerios Cereal": {
               "calories": 210.0,
@@ -3736,7 +3916,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 5.6,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 13.0
+              "mg_vitamin_c": 13.0,
+              "serving_size": "1 bowl"
             }
           },
           "fruit": {
@@ -3756,7 +3937,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 0.0,
               "mg_potassium": 80.0,
-              "mg_vitamin_c": 10.0
+              "mg_vitamin_c": 10.0,
+              "serving_size": "0.5 cups"
             },
             "Grape Juice": {
               "calories": 90.0,
@@ -3774,7 +3956,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.5,
               "mg_potassium": 70.0,
-              "mg_vitamin_c": 35.0
+              "mg_vitamin_c": 35.0,
+              "serving_size": "1 each"
             },
             "Mixed Berry Applesauce": {
               "calories": 50.0,
@@ -3791,7 +3974,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -3810,7 +3994,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -3826,7 +4011,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -3843,7 +4029,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -3860,7 +4047,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -3877,7 +4065,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         },
@@ -3899,7 +4088,8 @@
               "mg_calcium": 30.0,
               "mg_iron": 2.1,
               "mg_potassium": 290.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "12 piece"
             },
             "Brown Rice": {
               "calories": 100.0,
@@ -3917,7 +4107,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.6,
               "mg_potassium": 65.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "0.5 cups"
             }
           },
           "daily_serve": {
@@ -3937,7 +4128,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 1.8,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 package"
             }
           },
           "express": {
@@ -3957,7 +4149,8 @@
               "mg_calcium": 250.0,
               "mg_iron": 1.5,
               "mg_potassium": 420.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 each"
             },
             "Dinner Roll": {
               "calories": 160.0,
@@ -3975,7 +4168,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 1.6,
               "mg_potassium": 100.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Tuna Salad Sandwich": {
               "calories": 260.0,
@@ -3993,7 +4187,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.1,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 1.0
+              "mg_vitamin_c": 1.0,
+              "serving_size": "1 sandwich"
             }
           },
           "vegetable": {
@@ -4012,7 +4207,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.6,
               "mg_potassium": 170.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "0.5 cups"
             },
             "Peas & Carrots w/ Margarine": {
               "calories": 110.0,
@@ -4030,7 +4226,8 @@
               "mg_calcium": 30.0,
               "mg_iron": 1.4,
               "mg_potassium": 250.0,
-              "mg_vitamin_c": 14.0
+              "mg_vitamin_c": 14.0,
+              "serving_size": "0.75 cups"
             }
           },
           "fruit": {
@@ -4049,7 +4246,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.1,
               "mg_potassium": 65.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "4 wedge"
             },
             "Fresh Orange": {
               "calories": 45.0,
@@ -4066,7 +4264,8 @@
               "mg_calcium": 40.0,
               "mg_iron": 0.1,
               "mg_potassium": 180.0,
-              "mg_vitamin_c": 53.0
+              "mg_vitamin_c": 53.0,
+              "serving_size": "1 each"
             },
             "Fresh Apple Slices": {
               "calories": 45.0,
@@ -4083,7 +4282,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 90.0,
-              "mg_vitamin_c": 58.0
+              "mg_vitamin_c": 58.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -4102,7 +4302,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -4119,7 +4320,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -4135,7 +4337,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -4152,7 +4355,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -4169,7 +4373,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         }
@@ -4257,7 +4462,8 @@
               "mg_calcium": 30.0,
               "mg_iron": 1.5,
               "mg_potassium": 190.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Churro, Yogurt & Cheese Breakfast Pack": {
               "calories": 310.0,
@@ -4274,7 +4480,8 @@
               "mcg_vitamin_d": 2.1,
               "mg_calcium": 360.0,
               "mg_iron": 1.1,
-              "mg_potassium": 320.0
+              "mg_potassium": 320.0,
+              "serving_size": "1 package"
             }
           },
           "daily_serve": {
@@ -4294,7 +4501,8 @@
               "mg_calcium": 110.0,
               "mg_iron": 2.7,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 8.0
+              "mg_vitamin_c": 8.0,
+              "serving_size": "1 bowl"
             },
             "Trix Cereal": {
               "calories": 110.0,
@@ -4312,7 +4520,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.3,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Lucky Charms Cereal": {
               "calories": 110.0,
@@ -4330,7 +4539,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.8,
               "mg_potassium": 75.0,
-              "mg_vitamin_c": 6.0
+              "mg_vitamin_c": 6.0,
+              "serving_size": "1 bowl"
             },
             "Cinnamon Toast Crunch": {
               "calories": 110.0,
@@ -4348,7 +4558,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.6,
               "mg_potassium": 55.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 bowl"
             },
             "Frosted Corn Flakes Cereal": {
               "calories": 110.0,
@@ -4366,7 +4577,8 @@
               "mg_calcium": 80.0,
               "mg_iron": 8.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 4.0
+              "mg_vitamin_c": 4.0,
+              "serving_size": "1 bowl"
             },
             "Golden Grahams Cereal": {
               "calories": 110.0,
@@ -4384,7 +4596,8 @@
               "mg_calcium": 90.0,
               "mg_iron": 2.0,
               "mg_potassium": 0.0,
-              "mg_vitamin_c": 20.0
+              "mg_vitamin_c": 20.0,
+              "serving_size": "1 bowl"
             },
             "Giant Vanilla Goldfish Grahams": {
               "calories": 120.0,
@@ -4402,7 +4615,8 @@
               "mg_calcium": 100.0,
               "mg_iron": 2.1,
               "mg_potassium": 40.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "1 package"
             },
             "Honey Cheerios Cereal": {
               "calories": 210.0,
@@ -4420,7 +4634,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 5.6,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 13.0
+              "mg_vitamin_c": 13.0,
+              "serving_size": "1 bowl"
             }
           },
           "fruit": {
@@ -4440,7 +4655,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 0.0,
               "mg_potassium": 80.0,
-              "mg_vitamin_c": 10.0
+              "mg_vitamin_c": 10.0,
+              "serving_size": "0.5 cups"
             },
             "Mixed Berry Applesauce": {
               "calories": 50.0,
@@ -4457,7 +4673,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.3,
-              "mg_potassium": 95.0
+              "mg_potassium": 95.0,
+              "serving_size": "1 each"
             },
             "Fruit Juice": {
               "calories": 70.0,
@@ -4475,7 +4692,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.2,
               "mg_potassium": 170.0,
-              "mg_vitamin_c": 36.0
+              "mg_vitamin_c": 36.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -4494,7 +4712,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -4510,7 +4729,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -4527,7 +4747,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -4544,7 +4765,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -4561,7 +4783,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         },
@@ -4583,7 +4806,8 @@
               "mg_calcium": 110.0,
               "mg_iron": 3.8,
               "mg_potassium": 240.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 sandwich"
             },
             "Signature Sauce": {
               "calories": 70.0,
@@ -4601,7 +4825,8 @@
               "mg_calcium": 0.0,
               "mg_iron": 0.1,
               "mg_potassium": 20.0,
-              "mg_vitamin_c": 1.0
+              "mg_vitamin_c": 1.0,
+              "serving_size": "1 Tbsp"
             },
             "Dill Pickle Slices": {
               "calories": 0.0,
@@ -4619,7 +4844,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.1,
               "mg_potassium": 20.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "3 slice"
             }
           },
           "daily_serve": {
@@ -4639,7 +4865,8 @@
               "mg_calcium": 260.0,
               "mg_iron": 1.8,
               "mg_potassium": 350.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 package"
             }
           },
           "express": {
@@ -4659,7 +4886,8 @@
               "mg_calcium": 250.0,
               "mg_iron": 1.5,
               "mg_potassium": 420.0,
-              "mg_vitamin_c": 5.0
+              "mg_vitamin_c": 5.0,
+              "serving_size": "1 each"
             },
             "Dinner Roll": {
               "calories": 160.0,
@@ -4677,7 +4905,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 1.6,
               "mg_potassium": 100.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 each"
             },
             "Tuna Salad Sandwich": {
               "calories": 260.0,
@@ -4695,7 +4924,8 @@
               "mg_calcium": 70.0,
               "mg_iron": 2.1,
               "mg_potassium": 260.0,
-              "mg_vitamin_c": 1.0
+              "mg_vitamin_c": 1.0,
+              "serving_size": "1 sandwich"
             }
           },
           "vegetable": {
@@ -4714,7 +4944,8 @@
               "mcg_vitamin_d": 0.0,
               "mg_calcium": 10.0,
               "mg_iron": 0.4,
-              "mg_potassium": 260.0
+              "mg_potassium": 260.0,
+              "serving_size": "0.5 cups"
             },
             "Fresh Broccoli": {
               "calories": 10.0,
@@ -4731,7 +4962,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 105.0,
-              "mg_vitamin_c": 30.0
+              "mg_vitamin_c": 30.0,
+              "serving_size": "0.5 cups"
             },
             "Baby Carrots": {
               "calories": 25.0,
@@ -4748,7 +4980,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.6,
               "mg_potassium": 170.0,
-              "mg_vitamin_c": 2.0
+              "mg_vitamin_c": 2.0,
+              "serving_size": "0.5 cups"
             }
           },
           "fruit": {
@@ -4767,7 +5000,8 @@
               "mg_calcium": 10.0,
               "mg_iron": 0.1,
               "mg_potassium": 65.0,
-              "mg_vitamin_c": 3.0
+              "mg_vitamin_c": 3.0,
+              "serving_size": "4 wedge"
             },
             "Fresh Orange": {
               "calories": 45.0,
@@ -4784,7 +5018,8 @@
               "mg_calcium": 40.0,
               "mg_iron": 0.1,
               "mg_potassium": 180.0,
-              "mg_vitamin_c": 53.0
+              "mg_vitamin_c": 53.0,
+              "serving_size": "1 each"
             },
             "Fresh Apple Slices": {
               "calories": 45.0,
@@ -4801,7 +5036,8 @@
               "mg_calcium": 20.0,
               "mg_iron": 0.2,
               "mg_potassium": 90.0,
-              "mg_vitamin_c": 58.0
+              "mg_vitamin_c": 58.0,
+              "serving_size": "1 each"
             }
           },
           "milk": {
@@ -4820,7 +5056,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Milk": {
               "calories": 100.0,
@@ -4836,7 +5073,8 @@
               "mg_calcium": 310.0,
               "mg_iron": 0.1,
               "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
               "calories": 150.0,
@@ -4853,7 +5091,8 @@
               "mcg_vitamin_d": 2.4,
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
               "calories": 110.0,
@@ -4870,7 +5109,8 @@
               "mcg_vitamin_d": 2.0,
               "mg_calcium": 330.0,
               "mg_iron": 0.0,
-              "mg_potassium": 380.0
+              "mg_potassium": 380.0,
+              "serving_size": "1 carton"
             },
             "1% Lactose Free Milk": {
               "calories": 110.0,
@@ -4887,7 +5127,8 @@
               "mcg_vitamin_d": 2.5,
               "mg_calcium": 300.0,
               "mg_iron": 0.0,
-              "mg_potassium": 400.0
+              "mg_potassium": 400.0,
+              "serving_size": "1 carton"
             }
           }
         }
