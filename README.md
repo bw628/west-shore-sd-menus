@@ -7,7 +7,7 @@ or food search (find the next days a food is on the menu).
 
 ## Use it
 
-Live site: https://bw628.github.io/Morning-school-plan/
+Live site: https://bw628.github.io/west-shore-sd-menus/
 
 On iPhone: open the link in Safari → Share → **Add to Home Screen**. It opens
 as a standalone full-screen app.
