@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Lunch Menu">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
   <main>
@@ -46,6 +46,7 @@
 
     <footer class="footer" id="footer"></footer>
   </main>
-  <script src="app.js"></script>
+  <!-- Bump the ?v=N on app.js / styles.css with every deploy so cached home-screen installs pick up the new files. -->
+  <script src="app.js?v=2"></script>
 </body>
 </html>

@@ -310,7 +310,7 @@
     return MONTHS_SHORT[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
   }
 
-  fetch("data.json", { cache: "no-store" })
+  fetch("data.json?v=2", { cache: "no-store" })
     .then(function (resp) {
       if (!resp.ok) throw new Error("HTTP " + resp.status);
       return resp.json();
