@@ -112,7 +112,7 @@
   var weeknavEl = document.getElementById("weeknav");
   var tabDay = document.getElementById("tab-day");
   var tabWeek = document.getElementById("tab-week");
-  var tabSearch = document.getElementById("tab-search");
+  var searchBtnEl = document.getElementById("search-btn");
   var searchnavEl = document.getElementById("searchnav");
   var searchInputEl = document.getElementById("search-input");
   var searchSuggestEl = document.getElementById("search-suggest");
@@ -361,10 +361,12 @@
   function render() {
     tabDay.classList.toggle("active", view === "day");
     tabWeek.classList.toggle("active", view === "week");
-    tabSearch.classList.toggle("active", view === "search");
     tabDay.setAttribute("aria-selected", view === "day" ? "true" : "false");
     tabWeek.setAttribute("aria-selected", view === "week" ? "true" : "false");
-    tabSearch.setAttribute("aria-selected", view === "search" ? "true" : "false");
+    if (searchBtnEl) {
+      searchBtnEl.classList.toggle("active", view === "search");
+      searchBtnEl.setAttribute("aria-expanded", view === "search" ? "true" : "false");
+    }
     daynavEl.hidden = view !== "day";
     weeknavEl.hidden = view !== "week";
     searchnavEl.hidden = view !== "search";
@@ -383,7 +385,19 @@
 
   tabDay.addEventListener("click", function () { setView("day"); });
   tabWeek.addEventListener("click", function () { setView("week"); });
-  tabSearch.addEventListener("click", function () { setView("search"); });
+  // The magnifier button in the header opens the search view; tapping
+  // it again closes search and goes back to Day view. Day/Week tabs
+  // close search too, since setView changes the view.
+  if (searchBtnEl) {
+    searchBtnEl.addEventListener("click", function () {
+      if (view === "search") {
+        setView("day");
+      } else {
+        setView("search");
+        if (searchInputEl) searchInputEl.focus();
+      }
+    });
+  }
   document.getElementById("prev-day").addEventListener("click", function () {
     selected = stepDay(selected, -1);
     render();
@@ -701,7 +715,7 @@
 
   // Each school has its own menu file under data/.
   function loadSchool(slug) {
-    return fetch("data/" + slug + ".json?v=7", { cache: "no-store" })
+    return fetch("data/" + slug + ".json?v=8", { cache: "no-store" })
       .then(function (resp) {
         if (!resp.ok) throw new Error("HTTP " + resp.status);
         return resp.json();
