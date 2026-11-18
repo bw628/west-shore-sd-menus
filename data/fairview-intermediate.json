@@ -1,0 +1,573 @@
+{
+  "generated_at": "2026-11-18T04:02:54.771265Z",
+  "school": "Fairview Intermediate School",
+  "slug": "fairview-intermediate",
+  "weeks": [
+    "2026-11-15",
+    "2026-11-22"
+  ],
+  "days": {
+    "2026-11-15": {
+      "breakfast": {
+        "entree": [],
+        "daily_serve": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      },
+      "lunch": {
+        "entree": [],
+        "daily_serve": [],
+        "express": [],
+        "vegetable": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      }
+    },
+    "2026-11-16": {
+      "breakfast": {
+        "entree": [
+          "Chocolate Chip Muffin",
+          "Egg & Cheese Croissant",
+          "Giant Vanilla Goldfish Grahams"
+        ],
+        "daily_serve": [
+          "Cocoa Puffs Cereal",
+          "Trix Cereal",
+          "Lucky Charms Cereal",
+          "Cinnamon Toast Crunch",
+          "Frosted Corn Flakes Cereal",
+          "Golden Grahams Cereal",
+          "Honey Cheerios Cereal",
+          "Giant Vanilla Goldfish Grahams"
+        ],
+        "fruit": [
+          "Applesauce",
+          "Grape Juice",
+          "Diced Peaches"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      },
+      "lunch": {
+        "entree": [
+          "Soft Beef Tacos"
+        ],
+        "daily_serve": [
+          "PBJ Uncrustable Sandwich, Goldfish & Cheese Stick Pack"
+        ],
+        "express": [
+          "Popcorn Chicken Salad",
+          "Dinner Roll",
+          "Pretzel, Yogurt & Cheese Pack"
+        ],
+        "vegetable": [
+          "Black Beans",
+          "Baby Carrots"
+        ],
+        "fruit": [
+          "Fresh Apple Wedges",
+          "Fresh Orange Wedges",
+          "Fresh Apple Slices"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      }
+    },
+    "2026-11-17": {
+      "breakfast": {
+        "entree": [
+          "Turkey Sausage, Egg & Cheese Breakfast Burrito",
+          "Trix Cereal Bar",
+          "Giant Vanilla Goldfish Grahams"
+        ],
+        "daily_serve": [
+          "Cocoa Puffs Cereal",
+          "Trix Cereal",
+          "Lucky Charms Cereal",
+          "Cinnamon Toast Crunch",
+          "Frosted Corn Flakes Cereal",
+          "Golden Grahams Cereal",
+          "Honey Cheerios Cereal",
+          "Giant Vanilla Goldfish Grahams"
+        ],
+        "fruit": [
+          "Fruit Juice",
+          "Applesauce",
+          "Diced Peaches"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      },
+      "lunch": {
+        "entree": [
+          "BBQ Pork Riblet Sandwich"
+        ],
+        "daily_serve": [
+          "PBJ Uncrustable Sandwich, Goldfish & Cheese Stick Pack"
+        ],
+        "express": [
+          "Popcorn Chicken Salad",
+          "Dinner Roll",
+          "Pretzel, Yogurt & Cheese Pack"
+        ],
+        "vegetable": [
+          "Tater Tots",
+          "Fresh Cucumber Slices"
+        ],
+        "fruit": [
+          "Fresh Apple Wedges",
+          "Fresh Orange Wedges",
+          "Fresh Apple Slices"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      }
+    },
+    "2026-11-18": {
+      "breakfast": {
+        "entree": [
+          "Sausage Breakfast Sandwich",
+          "Cinnamon Churro Bites",
+          "Cocoa Peanut Butter Dip"
+        ],
+        "daily_serve": [
+          "Cocoa Puffs Cereal",
+          "Trix Cereal",
+          "Cinnamon Toast Crunch",
+          "Frosted Corn Flakes Cereal",
+          "Lucky Charms Cereal",
+          "Golden Grahams Cereal",
+          "Giant Vanilla Goldfish Grahams",
+          "Honey Cheerios Cereal"
+        ],
+        "fruit": [
+          "Fruit Juice",
+          "Diced Peaches",
+          "Applesauce"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      },
+      "lunch": {
+        "entree": [
+          "Sliced Roast Turkey",
+          "Poultry Gravy",
+          "Cornbread Stuffing",
+          "Vanilla Ice Cream"
+        ],
+        "daily_serve": [
+          "PBJ Uncrustable Sandwich, Goldfish & Cheese Stick Pack"
+        ],
+        "express": [],
+        "vegetable": [
+          "Corn w/ Margarine",
+          "Mashed Potatoes",
+          "Baby Carrots"
+        ],
+        "fruit": [
+          "Fresh Apple Wedges",
+          "Fresh Orange Wedges",
+          "Fresh Apple Slices"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      }
+    },
+    "2026-11-19": {
+      "breakfast": {
+        "entree": [
+          "Chocolate Filled Crescent",
+          "Egg & Cheese Breakfast Tacos"
+        ],
+        "daily_serve": [
+          "Cocoa Puffs Cereal",
+          "Trix Cereal",
+          "Cinnamon Toast Crunch",
+          "Frosted Corn Flakes Cereal",
+          "Lucky Charms Cereal",
+          "Golden Grahams Cereal",
+          "Giant Vanilla Goldfish Grahams",
+          "Honey Cheerios Cereal"
+        ],
+        "fruit": [
+          "Fruit Juice",
+          "Applesauce",
+          "Diced Peaches"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      },
+      "lunch": {
+        "entree": [
+          "Honey Stung Popcorn Chicken",
+          "Biscuit"
+        ],
+        "daily_serve": [
+          "PBJ Uncrustable Sandwich, Goldfish & Cheese Stick Pack"
+        ],
+        "express": [
+          "Popcorn Chicken Salad",
+          "Dinner Roll",
+          "Pretzel, Yogurt & Cheese Pack"
+        ],
+        "vegetable": [
+          "Spiral Fries",
+          "Fresh Broccoli"
+        ],
+        "fruit": [
+          "Fresh Apple Wedges",
+          "Fresh Orange Wedges",
+          "Fresh Apple Slices"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      }
+    },
+    "2026-11-20": {
+      "breakfast": {
+        "entree": [
+          "Mini Chicken Sausage Pancake Bites",
+          "Cinnamon Breakfast Round"
+        ],
+        "daily_serve": [
+          "Cocoa Puffs Cereal",
+          "Trix Cereal",
+          "Cinnamon Toast Crunch",
+          "Frosted Corn Flakes Cereal",
+          "Lucky Charms Cereal",
+          "Golden Grahams Cereal",
+          "Giant Vanilla Goldfish Grahams",
+          "Honey Cheerios Cereal"
+        ],
+        "fruit": [
+          "Apple Juice",
+          "Applesauce",
+          "Diced Peaches"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      },
+      "lunch": {
+        "entree": [
+          "Cheese Pizza",
+          "Pepperoni Pizza"
+        ],
+        "daily_serve": [
+          "PBJ Uncrustable Sandwich, Goldfish & Cheese Stick Pack"
+        ],
+        "express": [
+          "Popcorn Chicken Salad",
+          "Dinner Roll",
+          "Pretzel, Yogurt & Cheese Pack"
+        ],
+        "vegetable": [
+          "Red Peppers Fresh",
+          "Fresh Cucumber Slices"
+        ],
+        "fruit": [
+          "Whole Fresh Apple",
+          "Fresh Orange Wedges",
+          "Fresh Apple Slices"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      }
+    },
+    "2026-11-21": {
+      "breakfast": {
+        "entree": [],
+        "daily_serve": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      },
+      "lunch": {
+        "entree": [],
+        "daily_serve": [],
+        "express": [],
+        "vegetable": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      }
+    },
+    "2026-11-22": {
+      "breakfast": {
+        "entree": [],
+        "daily_serve": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      },
+      "lunch": {
+        "entree": [],
+        "daily_serve": [],
+        "express": [],
+        "vegetable": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      }
+    },
+    "2026-11-23": {
+      "breakfast": {
+        "entree": [
+          "Country Chicken & Cheese English Muffin",
+          "Vanilla Confetti  Snack'n Waffles"
+        ],
+        "daily_serve": [
+          "Cocoa Puffs Cereal",
+          "Trix Cereal",
+          "Lucky Charms Cereal",
+          "Cinnamon Toast Crunch",
+          "Frosted Corn Flakes Cereal",
+          "Golden Grahams Cereal",
+          "Giant Vanilla Goldfish Grahams",
+          "Honey Cheerios Cereal"
+        ],
+        "fruit": [
+          "Applesauce",
+          "Grape Juice",
+          "Diced Peaches"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      },
+      "lunch": {
+        "entree": [
+          "Chili Orange Glazed Popcorn Chicken",
+          "Brown Rice"
+        ],
+        "daily_serve": [
+          "PBJ Uncrustable Sandwich, Goldfish & Cheese Stick Pack"
+        ],
+        "express": [
+          "Vegetable Baja Salad",
+          "Dinner Roll",
+          "Tuna Salad Sandwich"
+        ],
+        "vegetable": [
+          "Baby Carrots",
+          "Peas & Carrots w/ Margarine"
+        ],
+        "fruit": [
+          "Fresh Apple Wedges",
+          "Fresh Orange",
+          "Fresh Apple Slices"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      }
+    },
+    "2026-11-24": {
+      "breakfast": {
+        "entree": [
+          "Glazed Cinnamon Roll",
+          "Churro, Yogurt & Cheese Breakfast Pack"
+        ],
+        "daily_serve": [
+          "Cocoa Puffs Cereal",
+          "Trix Cereal",
+          "Lucky Charms Cereal",
+          "Cinnamon Toast Crunch",
+          "Frosted Corn Flakes Cereal",
+          "Golden Grahams Cereal",
+          "Giant Vanilla Goldfish Grahams",
+          "Honey Cheerios Cereal"
+        ],
+        "fruit": [
+          "Applesauce",
+          "Fruit Juice",
+          "Diced Peaches"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      },
+      "lunch": {
+        "entree": [
+          "Chicken Patty Sandwich",
+          "Signature Sauce",
+          "Dill Pickle Slices"
+        ],
+        "daily_serve": [
+          "PBJ Uncrustable Sandwich, Goldfish & Cheese Stick Pack"
+        ],
+        "express": [
+          "Vegetable Baja Salad",
+          "Dinner Roll",
+          "Tuna Salad Sandwich"
+        ],
+        "vegetable": [
+          "Waffle Fries",
+          "Fresh Broccoli",
+          "Baby Carrots"
+        ],
+        "fruit": [
+          "Fresh Apple Wedges",
+          "Fresh Orange",
+          "Fresh Apple Slices"
+        ],
+        "condiments": [],
+        "milk": [
+          "1% Chocolate Milk",
+          "1% Milk",
+          "1% Strawberry Milk",
+          "Skim Chocolate Lactose Free Milk",
+          "1% Lactose Free Milk"
+        ]
+      }
+    },
+    "2026-11-25": {
+      "breakfast": {
+        "entree": [],
+        "daily_serve": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      },
+      "lunch": {
+        "entree": [],
+        "daily_serve": [],
+        "express": [],
+        "vegetable": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      }
+    },
+    "2026-11-26": {
+      "breakfast": {
+        "entree": [],
+        "daily_serve": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      },
+      "lunch": {
+        "entree": [],
+        "daily_serve": [],
+        "express": [],
+        "vegetable": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      }
+    },
+    "2026-11-27": {
+      "breakfast": {
+        "entree": [],
+        "daily_serve": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      },
+      "lunch": {
+        "entree": [],
+        "daily_serve": [],
+        "express": [],
+        "vegetable": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      }
+    },
+    "2026-11-28": {
+      "breakfast": {
+        "entree": [],
+        "daily_serve": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      },
+      "lunch": {
+        "entree": [],
+        "daily_serve": [],
+        "express": [],
+        "vegetable": [],
+        "fruit": [],
+        "condiments": [],
+        "milk": []
+      }
+    }
+  }
+}
