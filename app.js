@@ -25,10 +25,35 @@
   ];
 
   var data = null;
+
+  // User preferences, persisted in localStorage. Both default ON.
+  function readPref(key, def) {
+    try {
+      var v = localStorage.getItem(key);
+      if (v === null) return def;
+      return v === "1";
+    } catch (e) { return def; }
+  }
+  function writePref(key, val) {
+    try { localStorage.setItem(key, val ? "1" : "0"); } catch (e) {}
+  }
+  var lunchFirst = readPref("msp-lunch-first", true);
+  var after6Tomorrow = readPref("msp-after6-tomorrow", true);
+
   // Every fresh load opens on Day view showing today. The toggle works
   // within the session, but the view is never restored from storage.
   var view = "day";
-  var selected = startOfDay(new Date());
+
+  // Landing day for a fresh load: today, or the next school day when the
+  // "after 6 PM, open tomorrow" setting is on and it is 6 PM or later.
+  function landingDay() {
+    var now = new Date();
+    var today = startOfDay(now);
+    if (after6Tomorrow && now.getHours() >= 18) return stepDay(today, 1);
+    return today;
+  }
+
+  var selected = landingDay();
 
   var contentEl = document.getElementById("content");
   var dateLabelEl = document.getElementById("date-label");
@@ -170,23 +195,34 @@
       inner + "</details>";
   }
 
-  function mealCards(entry) {
+  function breakfastCard(entry) {
     var b = entry.breakfast || {};
-    var l = entry.lunch || {};
     var html = '<div class="card"><div class="card-title">\uD83E\uDD5E Breakfast</div>';
     BREAKFAST_MAINS.forEach(function (sec) {
       html += '<div class="subheading">' + escapeHTML(sec[0]) + "</div>" +
         mealList(stationItems(b, sec[1]));
     });
     html += extrasHTML(b) + "</div>";
+    return html;
+  }
 
-    html += '<div class="card"><div class="card-title">\uD83C\uDF4E Lunch</div>';
+  function lunchCard(entry) {
+    var l = entry.lunch || {};
+    var html = '<div class="card"><div class="card-title">\uD83C\uDF4E Lunch</div>';
     LUNCH_MAINS.forEach(function (sec) {
       html += '<div class="subheading">' + escapeHTML(sec[0]) + "</div>" +
         mealList(stationItems(l, sec[1]));
     });
     html += extrasHTML(l) + "</div>";
     return html;
+  }
+
+  // Meal order follows the "Show lunch first" preference, in day view
+  // and inside week-view day cards alike.
+  function mealCards(entry) {
+    var b = breakfastCard(entry);
+    var l = lunchCard(entry);
+    return lunchFirst ? l + b : b + l;
   }
 
   function noSchoolCard() {
@@ -303,6 +339,27 @@
     render();
   });
 
+  // Settings toggles at the bottom of the page. Both persist in
+  // localStorage. The 6 PM setting applies on the next fresh load, and
+  // immediately too when it is currently after 6 PM.
+  var setLunchFirstEl = document.getElementById("set-lunch-first");
+  var setAfter6El = document.getElementById("set-after6-tomorrow");
+  if (setLunchFirstEl && setAfter6El) {
+    setLunchFirstEl.checked = lunchFirst;
+    setAfter6El.checked = after6Tomorrow;
+    setLunchFirstEl.addEventListener("change", function () {
+      lunchFirst = setLunchFirstEl.checked;
+      writePref("msp-lunch-first", lunchFirst);
+      render();
+    });
+    setAfter6El.addEventListener("change", function () {
+      after6Tomorrow = setAfter6El.checked;
+      writePref("msp-after6-tomorrow", after6Tomorrow);
+      if (new Date().getHours() >= 18) selected = landingDay();
+      render();
+    });
+  }
+
   function formatUpdated(isoStr) {
     if (!isoStr) return "";
     var d = new Date(isoStr);
@@ -310,7 +367,7 @@
     return MONTHS_SHORT[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
   }
 
-  fetch("data.json?v=2", { cache: "no-store" })
+  fetch("data.json?v=3", { cache: "no-store" })
     .then(function (resp) {
       if (!resp.ok) throw new Error("HTTP " + resp.status);
       return resp.json();
