@@ -1,5 +1,5 @@
 {
-  "background_color": "#f2f2f7",
+  "background_color": "#f3f4f6",
   "description": "West Shore School District cafeteria menus: pick your school, breakfast and lunch by day or by week.",
   "display": "standalone",
   "icons": [
@@ -15,10 +15,10 @@
       "type": "image/png"
     }
   ],
-  "name": "West Shore Menu",
+  "name": "West Shore SD Menus",
   "orientation": "portrait",
   "scope": "./",
   "short_name": "Lunch Menu",
   "start_url": "./index.html",
-  "theme_color": "#f2f2f7"
+  "theme_color": "#f3f4f6"
 }

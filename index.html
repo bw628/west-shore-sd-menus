@@ -3,30 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>West Shore Menu</title>
+<title>West Shore SD Menus</title>
 <meta name="description" content="West Shore School District cafeteria menu, by day or by week. Pick your school.">
-<meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101214" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="West Shore Menu">
+<meta name="apple-mobile-web-app-title" content="West Shore SD Menus">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
   <main>
     <header class="header">
       <div class="header-titles">
-        <h1>West Shore Menu</h1>
+        <h1>West Shore SD Menus</h1>
         <button type="button" id="school-btn" class="school-btn" aria-haspopup="dialog" aria-label="Choose a school">Highland Primary School <span class="chev">&#8964;</span></button>
       </div>
       <div class="header-actions">
-        <a class="header-pill balance-link" href="https://linqconnect.com" target="_blank" rel="noopener">Check balance</a>
         <button type="button" id="search-btn" class="header-pill search-btn" aria-label="Search foods" aria-expanded="false" aria-controls="searchnav">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
-          <span>Search</span>
         </button>
       </div>
     </header>
@@ -59,16 +57,19 @@
       <div class="card"><p class="muted">Loading menu&hellip;</p></div>
     </div>
 
-    <section class="settings" aria-label="Settings">
+    <h2 id="settings-title" class="settings-title">Settings</h2>
+    <section class="settings" aria-labelledby="settings-title">
       <label class="setting-row">
         <span class="setting-label">Show lunch first</span>
-        <input type="checkbox" id="set-lunch-first" class="switch">
+        <input type="checkbox" id="set-lunch-first" class="switch" role="switch">
       </label>
       <label class="setting-row">
         <span class="setting-label">After 6 PM, open tomorrow&rsquo;s menu</span>
-        <input type="checkbox" id="set-after6-tomorrow" class="switch">
+        <input type="checkbox" id="set-after6-tomorrow" class="switch" role="switch">
       </label>
     </section>
+
+    <a class="balance-link" href="https://linqconnect.com" target="_blank" rel="noopener">Check meal balance <span aria-hidden="true">&#8599;</span></a>
 
     <footer class="footer" id="footer"></footer>
   </main>
@@ -84,6 +85,6 @@
     </div>
   </div>
   <!-- Bump the ?v=N on app.js / styles.css with every deploy so cached home-screen installs pick up the new files. -->
-  <script src="app.js?v=10"></script>
+  <script src="app.js?v=12"></script>
 </body>
 </html>

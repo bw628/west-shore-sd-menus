@@ -1,313 +1,329 @@
 :root {
   color-scheme: light dark;
-  --bg: #f2f2f7;
-  --card: #ffffff;
-  --text: #111111;
-  --muted: #6e6e73;
-  --accent: #d63031;
-  --accent-soft: #fdecea;
-  --item-bg: #d7e9fd;
-  --item-text: #0b4f9c;
-  --seg-bg: #e3e3e8;
-  --seg-active: #ffffff;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  --radius: 18px;
+  --bg: #f3f4f6;
+  --card: #fff;
+  --text: #17201e;
+  --muted: #586562;
+  --accent: #17634c;
+  --accent-soft: #e2f1e9;
+  --feature-bg: #e6f3eb;
+  --feature-text: #164534;
+  --item-bg: var(--accent-soft);
+  --item-text: var(--accent);
+  --line: #e1e6e4;
+  --seg-bg: #e6eae8;
+  --seg-active: #fff;
+  --shadow: 0 1px 2px rgb(22 42 35 / 5%);
+  --radius: 22px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101214;
+    --card: #1b1f21;
+    --text: #f2f6f3;
+    --muted: #abb8b2;
+    --accent: #9ae0bd;
+    --accent-soft: #233b31;
+    --feature-bg: #233e32;
+    --feature-text: #e2f7ea;
+    --line: #343d3a;
+    --seg-bg: #2c3432;
+    --seg-active: #434e49;
+    --shadow: none;
+  }
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 body {
   margin: 0;
-  padding:
-    calc(env(safe-area-inset-top) + 20px)
-    18px
-    calc(env(safe-area-inset-bottom) + 40px);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  padding: calc(env(safe-area-inset-top) + 16px)
+    max(16px, env(safe-area-inset-right))
+    calc(env(safe-area-inset-bottom) + 28px)
+    max(16px, env(safe-area-inset-left));
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
-  -webkit-text-size-adjust: 100%;
 }
 
-main { max-width: 640px; margin: 0 auto; }
+main { max-width: 590px; margin: 0 auto; }
+button, input { font: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 
 .header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
-  padding: 8px 4px 16px;
+  gap: 8px;
+  padding: 4px 2px 14px;
 }
 
 .header-titles { min-width: 0; }
 
-/* Right-hand header column: "Check balance" on top, the Search pill
-   directly under it. The column is as wide as its widest child (the
-   "Check balance" label) and both pills stretch to fill it, so the two
-   pills are identical in size. */
-.header-actions {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  width: max-content;
-  gap: 10px;
-  margin-top: 5px;
-}
-
-/* Shared pill for both top-right header controls: same height, width,
-   border-radius, background, and font. */
-.header-pill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  width: 100%;
-  border: 0;
-  border-radius: 100px;
-  background: var(--card);
-  color: var(--text);
-  font: inherit;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1;
-  padding: 11px 16px;
-  box-shadow: var(--shadow);
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-/* "Check balance" link to LINQ Connect, top-right of the header */
-.balance-link {
-  text-decoration: none;
-}
-
-/* Search pill under the "Check balance" pill. Active while the search
-   view is open. */
-.search-btn svg {
-  width: 20px;
-  height: 20px;
-  display: block;
-  flex: 0 0 auto;
-}
-
-.search-btn:active { opacity: 0.7; }
-
-.search-btn.active {
-  background: var(--accent);
-  color: #ffffff;
-}
-
-@media (max-width: 480px) {
-  h1 { font-size: 28px; }
-}
-
 h1 {
   margin: 0;
-  font-size: 32px;
-  line-height: 1.08;
-  letter-spacing: -0.8px;
+  font-size: clamp(23px, 7.7vw, 36px);
+  font-weight: 750;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
 }
 
-/* Tappable school name in the header — opens the school picker */
 .school-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  margin: 6px 0 0;
+  gap: 8px;
+  min-height: 44px;
   padding: 0;
   border: 0;
-  background: transparent;
-  color: var(--muted);
-  font: inherit;
-  font-size: 17px;
+  background: none;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 650;
   text-align: left;
   cursor: pointer;
 }
 
-.school-btn .chev {
-  font-size: 15px;
-  line-height: 1;
+.chev { line-height: 1; transform: translateY(-2px); }
+
+.header-pill, .arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--accent);
+  box-shadow: var(--shadow);
+  cursor: pointer;
 }
 
-.school-btn:active { opacity: 0.6; }
+.search-btn.active, .arrow:active { background: var(--accent-soft); }
 
-/* Segmented Day / Week toggle */
 .segmented {
   display: flex;
-  background: var(--seg-bg);
-  border-radius: 12px;
   padding: 3px;
-  margin-bottom: 14px;
+  background: var(--seg-bg);
+  border-radius: 14px;
 }
 
 .seg {
   flex: 1;
+  min-height: 38px;
+  padding: 4px;
   border: 0;
-  background: transparent;
-  color: var(--text);
-  font: inherit;
-  font-size: 17px;
-  font-weight: 600;
-  padding: 9px 0;
-  border-radius: 9px;
+  border-radius: 11px;
+  color: var(--muted);
+  background: none;
+  font-size: 15px;
+  font-weight: 650;
   cursor: pointer;
 }
 
 .seg.active {
   background: var(--seg-active);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 }
 
-/* Day / week navigation */
 .daynav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 14px;
+  column-gap: 5px;
+  margin: 12px 0;
 }
 
-/* The [hidden] rule must stay after the display rule above: without
-   it, `display: flex` overrides the hidden attribute, so the week
-   nav shows as a bare pair of arrows with no dates in Day/Search
-   view (and the day nav shows in Week/Search view). */
-.daynav[hidden] { display: none; }
+#daynav { grid-template-areas: "prev date next" "prev today next"; }
+#prev-day { grid-area: prev; }
+#next-day { grid-area: next; }
+#date-label { grid-area: date; align-self: end; }
+#weeknav .date-label { grid-column: 2; }
 
 .arrow {
-  flex: 0 0 auto;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 50%;
-  background: var(--card);
-  color: var(--text);
   font-size: 26px;
   line-height: 1;
-  box-shadow: var(--shadow);
-  cursor: pointer;
-}
-
-.today-btn {
-  flex: 0 0 auto;
-  border: 0;
-  border-radius: 100px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font: inherit;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 10px 16px;
-  cursor: pointer;
 }
 
 .date-label {
-  flex: 1;
   text-align: center;
-  font-size: 19px;
+  font-size: clamp(14px, 4.1vw, 17px);
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* Cards */
+.today-btn {
+  grid-area: today;
+  justify-self: center;
+  align-self: start;
+  min-height: 24px;
+  padding: 1px 12px 2px;
+  border: 0;
+  border-radius: 100px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.today-btn[aria-current="date"] { background: transparent; }
+
 .card {
-  background: var(--card);
+  padding: 18px;
+  margin-bottom: 12px;
   border-radius: var(--radius);
-  padding: 19px;
-  margin-bottom: 14px;
+  background: var(--card);
   box-shadow: var(--shadow);
 }
-
-.card.today { outline: 2px solid var(--accent); }
 
 .card-title {
+  margin: 0 0 12px;
   font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
 }
 
-.day-heading {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 8px;
+.meal-card { padding: 0; overflow: hidden; }
+
+.meal-title {
+  margin: 0;
+  padding: 16px 18px 0;
+  font-size: 21px;
 }
 
-.day-heading .today-tag {
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  margin-left: 6px;
+.meal-stations {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+
+.meal-station {
+  grid-column: span 2;
+  padding: 12px 18px;
+  overflow-wrap: anywhere;
+}
+
+.meal-station + .meal-station { border-top: 1px solid var(--line); }
+.meal-station.station-vegetable, .station-vegetable + .station-fruit { grid-column: span 1; }
+.station-vegetable + .station-fruit { border-left: 1px solid var(--line); }
+
+.meal-featured > .meal-title,
+.meal-featured .station-entree {
+  background: var(--feature-bg);
+  color: var(--feature-text);
+}
+
+.meal-featured .station-entree { padding-top: 6px; padding-bottom: 16px; }
 
 .subheading {
-  margin: 14px 0 5px;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
+  margin: 0 0 5px;
   color: var(--muted);
-}
-
-.subheading:first-of-type { margin-top: 4px; }
-
-/* Collapsed "Condiments & milk" inside a meal card */
-.extras {
-  margin-top: 16px;
-  padding-top: 4px;
-  border-top: 1px solid var(--seg-bg);
-}
-
-.extras summary {
-  cursor: pointer;
-  padding: 10px 0 4px;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: 0.035em;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
-  color: var(--muted);
 }
 
-/* Collapsed "Earlier this week" in week view */
-.earlier { margin-bottom: 14px; }
+.meal-featured .station-entree .subheading { color: var(--accent); }
 
-.earlier > summary {
-  cursor: pointer;
+.meal-list {
+  margin: 0;
+  padding: 0;
   list-style: none;
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 16px 19px;
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.38;
 }
 
-.earlier > summary::-webkit-details-marker { display: none; }
+.meal-list li + li { margin-top: 3px; }
 
-.earlier .card { margin-top: 14px; }
-.earlier .card:last-child { margin-bottom: 0; }
-
-ul {
-  padding-left: 23px;
-  margin: 7px 0 3px;
+.meal-featured .station-entree li:first-child {
+  margin-bottom: 5px;
+  font-size: clamp(22px, 6.3vw, 29px);
+  line-height: 1.1;
+  font-weight: 750;
+  letter-spacing: -0.035em;
 }
 
-li {
-  font-size: 18px;
-  line-height: 1.42;
-  margin-bottom: 6px;
-}
+.meal-featured .station-entree li + li { display: inline; }
+.meal-featured .station-entree li + li::before { content: ' · '; }
+.meal-featured .station-entree li:nth-child(2)::before { content: none; }
 
 .muted {
+  margin: 8px 0 0;
   color: var(--muted);
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.45;
 }
 
-/* Settings toggles at the bottom of the page */
-.settings {
-  background: var(--card);
+.meal-station .muted { margin: 0; }
+
+.extras {
+  padding: 0 18px;
+  border-top: 1px solid var(--line);
+}
+
+.extras summary {
+  min-height: 44px;
+  padding: 12px 0;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.extras[open] { padding-bottom: 12px; }
+.extras .meal-list + .subheading { margin-top: 10px; }
+
+.week-card { padding: 10px; background: var(--seg-bg); }
+.week-card .meal-card { --radius: 16px; margin-bottom: 8px; }
+.week-card .meal-card:last-child { margin-bottom: 0; }
+.week-card.today { outline: 1px solid var(--accent); outline-offset: -1px; }
+
+.day-heading {
+  padding: 4px 6px 10px;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.today-tag {
+  margin-left: 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.earlier { margin: 12px 0; }
+
+.earlier > summary {
+  padding: 14px 18px;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin-bottom: 14px;
+  background: var(--card);
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.earlier .week-card { margin-top: 12px; }
+
+.settings-title {
+  margin: 24px 16px 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.settings {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--card);
 }
 
 .setting-row {
@@ -315,68 +331,78 @@ li {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 14px 19px;
+  min-height: 56px;
+  padding: 10px 16px;
+  font-size: 15px;
   cursor: pointer;
 }
 
-.setting-row + .setting-row { border-top: 1px solid var(--seg-bg); }
-
-.setting-label {
-  font-size: 17px;
-  font-weight: 600;
-}
-
-/* iOS-style switch */
+.setting-row + .setting-row { border-top: 1px solid var(--line); }
 .switch {
-  -webkit-appearance: none;
   appearance: none;
-  flex: 0 0 auto;
-  width: 51px;
-  height: 31px;
-  margin: 0;
-  border: 0;
-  border-radius: 16px;
-  background: var(--seg-bg);
   position: relative;
+  flex: 0 0 auto;
+  width: 50px;
+  height: 30px;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--seg-bg);
   cursor: pointer;
-  transition: background 0.2s;
 }
-
-.switch:checked { background: #34c759; }
 
 .switch::after {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 27px;
-  height: 27px;
+  inset: 2px auto 2px 2px;
+  width: 24px;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 22%);
+}
+
+.switch:checked {
+  border-color: transparent;
+  background: var(--accent);
 }
 
 .switch:checked::after { transform: translateX(20px); }
 
+@media (forced-colors: active) {
+  .switch { appearance: auto; }
+  .switch::after { content: none; }
+}
+
+.balance-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 8px 16px;
+  margin-top: 10px;
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
 .footer {
-  padding: 6px 4px 0;
-  font-size: 14px;
+  padding: 14px 4px 0;
   color: var(--muted);
+  font-size: 12px;
   text-align: center;
 }
 
 .footer a { color: inherit; }
 
-/* School picker bottom sheet. The [hidden] rule must stay after the
-   display rules or it would be overridden. */
+/* School picker */
 .sheet {
   position: fixed;
   inset: 0;
   z-index: 30;
 }
-
-.sheet[hidden] { display: none; }
 
 .sheet-backdrop {
   position: absolute;
@@ -389,7 +415,7 @@ li {
   left: 0;
   right: 0;
   bottom: 0;
-  max-width: 640px;
+  max-width: 590px;
   margin: 0 auto;
   max-height: 72vh;
   overflow-y: auto;
@@ -408,12 +434,13 @@ li {
 
 .sheet-title {
   font-size: 19px;
-  font-weight: 700;
+  font-weight: 750;
+  letter-spacing: -0.02em;
 }
 
 .sheet-close {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border: 0;
   border-radius: 50%;
   background: var(--seg-bg);
@@ -443,7 +470,8 @@ li {
   background: transparent;
   color: var(--text);
   font: inherit;
-  font-size: 18px;
+  font-size: 16px;
+  min-height: 48px;
   text-align: left;
   padding: 13px 19px;
   cursor: pointer;
@@ -459,7 +487,7 @@ li {
 /* Food search */
 .searchbox {
   position: relative;
-  margin-bottom: 14px;
+  margin: 12px 0 14px;
 }
 
 .searchbox input[type="search"] {
@@ -469,7 +497,7 @@ li {
   background: var(--card);
   color: var(--text);
   font: inherit;
-  font-size: 18px;
+  font-size: 16px;
   padding: 14px 52px 14px 18px;
   box-shadow: var(--shadow);
   outline: none;
@@ -479,9 +507,7 @@ li {
 
 .searchbox input[type="search"]:focus { outline: 2px solid var(--accent); }
 
-/* Clear (×) button inside the right end of the search box.
-   Shown only when the input has text; the [hidden] rule below must
-   stay after the display rule or the flex display would override it. */
+/* Clear search */
 .search-clear {
   position: absolute;
   right: 6px;
@@ -503,8 +529,6 @@ li {
 }
 
 .search-clear:active { background: var(--seg-bg); }
-
-.search-clear[hidden] { display: none; }
 
 /* Autocomplete dropdown under the search box */
 .suggest {
@@ -623,7 +647,7 @@ span.cal-day.blank { background: transparent; }
   background: transparent;
   color: var(--text);
   font: inherit;
-  font-size: 18px;
+  font-size: 16px;
   padding: 11px 4px;
   cursor: pointer;
   text-align: left;
@@ -631,18 +655,100 @@ span.cal-day.blank { background: transparent; }
 
 .result-chev { color: var(--muted); font-size: 22px; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000000;
-    --card: #1c1c1e;
-    --text: #ffffff;
-    --muted: #a1a1a6;
-    --accent: #ff6b6b;
-    --accent-soft: #3a1d1d;
-    --item-bg: #173a5e;
-    --item-text: #bcd8f5;
-    --seg-bg: #2c2c2e;
-    --seg-active: #636366;
-    --shadow: none;
+
+/* School colors tint the menu and controls. Main surfaces stay neutral. */
+@supports (color: light-dark(white, black)) and (color: color-mix(in srgb, white, black)) {
+  :root[data-school] {
+    --accent: light-dark(var(--school-ink), var(--school-light));
+    --accent-soft: color-mix(in srgb, var(--accent) 16%, var(--card));
+    --feature-bg: color-mix(in srgb, var(--school-secondary) 24%, var(--card));
+    --feature-text: var(--text);
+  }
+
+  :root[data-school="highland-elementary"] {
+    --school-ink: #642a88;
+    --school-light: #e2bbff;
+    --school-secondary: #169b98;
+  }
+
+  :root[data-school="cedar-cliff-high-school"] {
+    --school-ink: #142d69;
+    --school-light: #cadbff;
+    --school-secondary: #d7a526;
+  }
+
+  :root[data-school="red-land-high-school"] {
+    --school-ink: #9d1730;
+    --school-light: #ffb1ba;
+    --school-secondary: #1c3f78;
+  }
+
+  :root[data-school="crossroads-middle-school"] {
+    --school-ink: #24336e;
+    --school-light: #c1c9ff;
+    --school-secondary: #a82a33;
+  }
+
+  :root[data-school="fairview-intermediate"] {
+    --school-ink: #16529b;
+    --school-light: #a8d3ff;
+    --school-secondary: #e4c44d;
+  }
+
+  :root[data-school="fishing-creek-elementary"] {
+    --school-ink: #075878;
+    --school-light: #a2e3ff;
+    --school-secondary: #43bad9;
+  }
+
+  :root[data-school="hillside-elementary"] {
+    --school-ink: #315b8c;
+    --school-light: #b9d8ff;
+    --school-secondary: #c89d48;
+  }
+
+  :root[data-school="newberry-elementary"] {
+    --school-ink: #283294;
+    --school-light: #c3c6ff;
+    --school-secondary: #697bf4;
+  }
+
+  :root[data-school="new-cumberland-middle-school"] {
+    --school-ink: #1b4484;
+    --school-light: #aed2ff;
+    --school-secondary: #4596c5;
+  }
+
+  :root[data-school="old-trail-intermediate"] {
+    --school-ink: #29345d;
+    --school-light: #d1d9ff;
+    --school-secondary: #dc565d;
+  }
+
+  :root[data-school="redmill-elementary"] {
+    --school-ink: #a61f2e;
+    --school-light: #ffb6be;
+    --school-secondary: #197eb9;
+  }
+
+  :root[data-school="rossmoyne-elementary"] {
+    --school-ink: #70431a;
+    --school-light: #f5d58d;
+    --school-secondary: #e1b635;
+  }
+
+  :root[data-school="washington-heights-elementary"] {
+    --school-ink: #185b90;
+    --school-light: #a3d6ff;
+    --school-secondary: #eeb72a;
+  }
+
+  .meal-featured > .meal-title,
+  .meal-featured .station-entree {
+    box-shadow: inset 3px 0 var(--school-secondary);
+  }
+
+  .meal-featured .station-entree li:first-child {
+    color: var(--accent);
   }
 }

@@ -25,6 +25,7 @@
   ];
 
   var data = null;
+  var menuRequest = 0;
 
   // User preferences, persisted in localStorage. Both default ON.
   function readPref(key, def) {
@@ -107,6 +108,7 @@
 
   var contentEl = document.getElementById("content");
   var dateLabelEl = document.getElementById("date-label");
+  var todayBtnEl = document.getElementById("today-btn");
   var weekLabelEl = document.getElementById("week-label");
   var daynavEl = document.getElementById("daynav");
   var weeknavEl = document.getElementById("weeknav");
@@ -183,7 +185,7 @@
     if (!items || !items.length) {
       return '<p class="muted">N/A</p>';
     }
-    return "<ul>" + items.map(function (x) {
+    return '<ul class="meal-list" role="list">' + items.map(function (x) {
       return "<li>" + escapeHTML(x) + "</li>";
     }).join("") + "</ul>";
   }
@@ -255,48 +257,38 @@
       inner + "</details>";
   }
 
-  function breakfastCard(entry) {
-    var b = entry.breakfast || {};
-    var html = '<div class="card"><div class="card-title">\uD83E\uDD5E Breakfast</div>';
-    BREAKFAST_MAINS.forEach(function (sec) {
-      html += '<div class="subheading">' + escapeHTML(sec[0]) + "</div>" +
-        mealList(stationItems(b, sec[1]));
+  function mealCard(meal, title, sections, featured) {
+    var html = '<section class="card meal-card' + (featured ? ' meal-featured' : '') +
+      '"><h2 class="card-title meal-title">' + title + '</h2><div class="meal-stations">';
+    sections.forEach(function (section) {
+      html += '<div class="meal-station station-' + section[1] + '">' +
+        '<h3 class="subheading">' + escapeHTML(section[0]) + '</h3>' +
+        mealList(stationItems(meal, section[1])) + '</div>';
     });
-    html += extrasHTML(b) + "</div>";
-    return html;
+    return html + '</div>' + extrasHTML(meal) + '</section>';
   }
 
-  function lunchCard(entry) {
-    var l = entry.lunch || {};
-    var html = '<div class="card"><div class="card-title">\uD83C\uDF4E Lunch</div>';
-    LUNCH_MAINS.forEach(function (sec) {
-      html += '<div class="subheading">' + escapeHTML(sec[0]) + "</div>" +
-        mealList(stationItems(l, sec[1]));
-    });
-    html += extrasHTML(l) + "</div>";
-    return html;
-  }
-
-  // Meal order follows the "Show lunch first" preference, in day view
-  // and inside week-view day cards alike.
+  // Keep the saved meal-order preference in both views.
   function mealCards(entry) {
-    var b = breakfastCard(entry);
-    var l = lunchCard(entry);
-    return lunchFirst ? l + b : b + l;
+    var breakfast = mealCard(entry.breakfast, "Breakfast", BREAKFAST_MAINS, !lunchFirst);
+    var lunch = mealCard(entry.lunch, "Lunch", LUNCH_MAINS, lunchFirst);
+    return lunchFirst ? lunch + breakfast : breakfast + lunch;
   }
 
   function noSchoolCard() {
-    return '<div class="card"><div class="card-title">\uD83C\uDF7D\uFE0F Meals</div>' +
+    return '<div class="card"><div class="card-title">Meals</div>' +
       '<p class="muted">No school</p></div>';
   }
 
   function renderDay() {
     dateLabelEl.textContent = longDate(selected);
+    todayBtnEl.setAttribute("aria-current",
+      iso(selected) === iso(new Date()) ? "date" : "false");
     if (isWeekend(selected)) {
       // Fallback only: the day arrows skip weekends, so this is reached
       // only if the selected date lands on a weekend some other way.
       contentEl.innerHTML =
-        '<div class="card"><div class="card-title">\uD83C\uDF7D\uFE0F Meals</div>' +
+        '<div class="card"><div class="card-title">Meals</div>' +
         '<p class="muted">Weekend \u2014 no school.</p></div>';
       return;
     }
@@ -317,7 +309,7 @@
     var todayISO = iso(startOfDay(new Date()));
     var isToday = dISO === todayISO;
     var entry = normalizeEntry(dayEntry(d));
-    var html = '<div class="card' + (isToday ? " today" : "") + '">' +
+    var html = '<div class="card week-card' + (isToday ? " today" : "") + '">' +
       '<div class="day-heading">' + escapeHTML(shortDate(d)) +
       (isToday ? '<span class="today-tag">Today</span>' : "") + "</div>";
     if (!entry || dayIsEmpty(entry)) {
@@ -406,7 +398,7 @@
     selected = stepDay(selected, 1);
     render();
   });
-  document.getElementById("today-btn").addEventListener("click", function () {
+  todayBtnEl.addEventListener("click", function () {
     selected = startOfDay(new Date());
     render();
   });
@@ -602,7 +594,7 @@
     }
     if (!searchItem) {
       contentEl.innerHTML =
-        '<div class="card"><div class="card-title">\uD83D\uDD0D Food search</div>' +
+        '<div class="card"><div class="card-title">Food search</div>' +
         "<p class=\"muted\">Type a food above to see the days it&rsquo;s on " +
         "the menu &mdash; breakfast and lunch separately.</p></div>";
       return;
@@ -705,22 +697,25 @@
   }
 
   function updateSchoolChrome() {
+    document.documentElement.dataset.school = school;
     var name = schoolName(school);
     if (schoolBtnEl) {
       schoolBtnEl.innerHTML = escapeHTML(name) +
         ' <span class="chev">\u2304</span>';
     }
-    document.title = "West Shore Menu \u2014 " + name;
+    document.title = "West Shore SD Menus \u2014 " + name;
   }
 
   // Each school has its own menu file under data/.
   function loadSchool(slug) {
+    var request = ++menuRequest;
     return fetch("data/" + slug + ".json?v=10", { cache: "no-store" })
       .then(function (resp) {
         if (!resp.ok) throw new Error("HTTP " + resp.status);
         return resp.json();
       })
       .then(function (json) {
+        if (request !== menuRequest) return;
         data = json;
         buildItemList();
         // If the user already typed before the data arrived, offer
@@ -736,8 +731,9 @@
         render();
       })
       .catch(function () {
+        if (request !== menuRequest) return;
         contentEl.innerHTML =
-          '<div class="card"><div class="card-title">\uD83C\uDF7D\uFE0F Meals</div>' +
+          '<div class="card"><div class="card-title">Meals</div>' +
           '<p class="muted">Menu data couldn&rsquo;t be loaded. Check your connection and try again.</p></div>';
       });
   }
@@ -766,6 +762,9 @@
     closeSchoolPicker();
     if (slug === school) return;
     school = slug;
+    data = null;
+    allItems = [];
+    footerEl.textContent = '';
     writeStringPref("msp-school", school);
     updateSchoolChrome();
     // Drop the old school's search state before the new data lands.
