@@ -656,99 +656,100 @@ span.cal-day.blank { background: transparent; }
 .result-chev { color: var(--muted); font-size: 22px; }
 
 
-/* School colors tint the menu and controls. Main surfaces stay neutral. */
+/* School colors fill the entree blocks and accent the controls. */
 @supports (color: light-dark(white, black)) and (color: color-mix(in srgb, white, black)) {
   :root[data-school] {
     --accent: light-dark(var(--school-ink), var(--school-light));
     --accent-soft: color-mix(in srgb, var(--accent) 16%, var(--card));
-    --feature-bg: color-mix(in srgb, var(--school-secondary) 24%, var(--card));
-    --feature-text: var(--text);
+    --feature-bg: var(--school-ink);
+    --feature-text: #fff;
   }
 
   :root[data-school="highland-elementary"] {
-    --school-ink: #642a88;
+    --school-ink: #321271;
     --school-light: #e2bbff;
-    --school-secondary: #169b98;
+    --school-secondary: #00b4bc;
   }
 
   :root[data-school="cedar-cliff-high-school"] {
-    --school-ink: #142d69;
+    --school-ink: #002855;
     --school-light: #cadbff;
-    --school-secondary: #d7a526;
+    --school-secondary: #eaaa00;
   }
 
   :root[data-school="red-land-high-school"] {
-    --school-ink: #9d1730;
+    --school-ink: #c60c30;
     --school-light: #ffb1ba;
-    --school-secondary: #1c3f78;
+    --school-secondary: #002244;
   }
 
   :root[data-school="crossroads-middle-school"] {
-    --school-ink: #24336e;
+    --school-ink: #152b6c;
     --school-light: #c1c9ff;
-    --school-secondary: #a82a33;
+    --school-secondary: #df243d;
   }
 
   :root[data-school="fairview-intermediate"] {
-    --school-ink: #16529b;
+    --school-ink: #034896;
     --school-light: #a8d3ff;
-    --school-secondary: #e4c44d;
+    --school-secondary: #ffcd35;
   }
 
   :root[data-school="fishing-creek-elementary"] {
-    --school-ink: #075878;
+    --school-ink: #005b8d;
     --school-light: #a2e3ff;
-    --school-secondary: #43bad9;
+    --school-secondary: #29c9ec;
   }
 
   :root[data-school="hillside-elementary"] {
-    --school-ink: #315b8c;
+    --school-ink: #265689;
     --school-light: #b9d8ff;
-    --school-secondary: #c89d48;
+    --school-secondary: #f1b825;
   }
 
   :root[data-school="newberry-elementary"] {
-    --school-ink: #283294;
+    --school-ink: #1c267f;
     --school-light: #c3c6ff;
-    --school-secondary: #697bf4;
+    --school-secondary: #7284ff;
   }
 
   :root[data-school="new-cumberland-middle-school"] {
-    --school-ink: #1b4484;
+    --school-ink: #12458b;
     --school-light: #aed2ff;
-    --school-secondary: #4596c5;
+    --school-secondary: #56bce8;
   }
 
   :root[data-school="old-trail-intermediate"] {
-    --school-ink: #29345d;
+    --school-ink: #202b66;
     --school-light: #d1d9ff;
-    --school-secondary: #dc565d;
+    --school-secondary: #fa4558;
   }
 
   :root[data-school="redmill-elementary"] {
-    --school-ink: #a61f2e;
+    --school-ink: #b7122d;
     --school-light: #ffb6be;
-    --school-secondary: #197eb9;
+    --school-secondary: #148adc;
   }
 
   :root[data-school="rossmoyne-elementary"] {
-    --school-ink: #70431a;
+    --school-ink: #75390d;
     --school-light: #f5d58d;
-    --school-secondary: #e1b635;
+    --school-secondary: #f9c734;
   }
 
   :root[data-school="washington-heights-elementary"] {
-    --school-ink: #185b90;
+    --school-ink: #145c97;
     --school-light: #a3d6ff;
-    --school-secondary: #eeb72a;
+    --school-secondary: #ffc52b;
   }
 
   .meal-card > .meal-title,
   .meal-card .station-entree {
-    box-shadow: inset 3px 0 var(--school-secondary);
+    box-shadow: inset 8px 0 var(--school-secondary);
   }
 
-  .meal-card .station-entree li:first-child {
-    color: var(--accent);
+  .meal-card .station-entree .subheading,
+  .meal-card .station-entree .muted {
+    color: var(--feature-text);
   }
 }

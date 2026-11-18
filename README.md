@@ -30,14 +30,15 @@ as a standalone full-screen app.
 ## School colors
 
 The selected school sets the accent and featured meal colors in both light
-and dark mode. Hex values are adapted for the app from school-published
-branding and newsletters. Highland uses the requested purple and teal.
+and dark mode. The app adapts colors from school-published branding and
+newsletters, with additional palette references for Highland, Cedar Cliff,
+and Red Land.
 
 | School | Palette used in the app | Reference |
 | --- | --- | --- |
-| Highland | Purple and teal | User-provided colors |
-| Cedar Cliff | Navy, white and gold | [School branding](https://www.wssd.k12.pa.us/cedarcliff.aspx), [school profile](https://www.wssd.k12.pa.us/Content.aspx?id=17810) |
-| Red Land | Red, navy and white | [School branding](https://www.wssd.k12.pa.us/redland.aspx) |
+| Highland | Purple and teal | [Charlotte Hornets color reference](https://www.nba.com/hornets/news/hornets-unveil-new-statement-edition-uniform-for-2022-23) |
+| Cedar Cliff | Navy, white and gold | [School branding](https://www.wssd.k12.pa.us/cedarcliff.aspx), [school profile](https://www.wssd.k12.pa.us/Content.aspx?id=17810), [WVU color reference](https://trademarklicensing.wvu.edu/protected-indicia) |
+| Red Land | Red, navy and white | [School branding](https://www.wssd.k12.pa.us/redland.aspx), [Patriots red uniform reference](https://www.patriots.com/press-room/history-logo-uniform) |
 | Crossroads | Navy and red | [School newsletter](https://www.wssd.k12.pa.us/monthlynewsletter6556.aspx) |
 | Fairview | Royal blue and gold | [School newsletter graphic](https://www.wssd.k12.pa.us/fairviewintermediateschool.aspx) |
 | Fishing Creek | Blue and aqua | [School newsletter graphic](https://www.wssd.k12.pa.us/fishingcreek.aspx) |
