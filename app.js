@@ -456,6 +456,41 @@
     renderPlateLabel();
   });
 
+  var plateDragHeader = document.getElementById("plate-drag-header");
+  var plateDrag = null;
+
+  function resetPlateDrag() {
+    plateDrag = null;
+    plateDialog.style.removeProperty("--plate-drag-y");
+  }
+
+  plateDragHeader.addEventListener("pointerdown", function (e) {
+    if (!e.isPrimary || e.button !== 0 || e.target.closest("button")) return;
+    plateDrag = { id: e.pointerId, x: e.clientX, y: e.clientY };
+    plateDragHeader.setPointerCapture(e.pointerId);
+  });
+
+  plateDragHeader.addEventListener("pointermove", function (e) {
+    if (!plateDrag || e.pointerId !== plateDrag.id) return;
+    var down = e.clientY - plateDrag.y;
+    if (down > 0 && down > Math.abs(e.clientX - plateDrag.x)) {
+      plateDialog.style.setProperty("--plate-drag-y", down + "px");
+    } else {
+      plateDialog.style.removeProperty("--plate-drag-y");
+    }
+  });
+
+  plateDragHeader.addEventListener("pointerup", function (e) {
+    if (!plateDrag || e.pointerId !== plateDrag.id) return;
+    var down = e.clientY - plateDrag.y;
+    var dismiss = down >= 56 && down > Math.abs(e.clientX - plateDrag.x);
+    resetPlateDrag();
+    if (dismiss) plateDialog.close();
+  });
+
+  plateDragHeader.addEventListener("lostpointercapture", resetPlateDrag);
+  plateDialog.addEventListener("close", resetPlateDrag);
+
   plateJump.addEventListener("click", function () {
     var heading = document.getElementById("plate-label-title");
     if (heading) heading.focus();

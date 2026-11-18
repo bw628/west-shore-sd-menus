@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="West Shore SD Menus">
 <link rel="apple-touch-icon" href="west-shore-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest?v=2">
-<link rel="stylesheet" href="styles.css?v=16">
+<link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body>
   <main>
@@ -85,7 +85,8 @@
     </div>
   </div>
   <dialog id="plate-dialog" class="plate-dialog" aria-labelledby="plate-title" aria-describedby="plate-meal-date">
-    <header class="plate-header">
+    <header class="plate-header" id="plate-drag-header">
+      <div class="plate-grab" aria-hidden="true"></div>
       <div>
         <h2 id="plate-title">My Plate</h2>
         <p id="plate-meal-date"></p>
@@ -103,6 +104,6 @@
   </dialog>
 
   <!-- Bump the ?v=N on app.js / styles.css with every deploy so cached home-screen installs pick up the new files. -->
-  <script src="app.js?v=16"></script>
+  <script src="app.js?v=17"></script>
 </body>
 </html>

@@ -807,7 +807,13 @@ body:has(.plate-dialog[open]) { overflow: hidden; }
   background: var(--card);
 }
 
-.plate-header { border-bottom: 1px solid var(--line); }
+.plate-header {
+  position: relative;
+  padding-top: 30px;
+  border-bottom: 1px solid var(--line);
+  touch-action: none;
+  user-select: none;
+}
 .plate-header h2 { margin: 0; font-size: 1.35rem; }
 .plate-header p { margin: 3px 0 0; color: var(--muted); font-size: 0.82rem; }
 .plate-footer { border-top: 1px solid var(--line); min-height: 61px; }
@@ -949,3 +955,28 @@ body:has(.plate-dialog[open]) { overflow: hidden; }
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
+
+.plate-dialog[open] {
+  transform: translateY(var(--plate-drag-y, 0px));
+}
+
+.plate-grab {
+  display: grid;
+  position: absolute;
+  inset: 0 0 auto;
+  height: 26px;
+  place-items: center;
+  background: var(--card);
+  cursor: grab;
+}
+
+.plate-grab::before {
+  content: "";
+  width: 36px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--muted);
+  opacity: 0.48;
+}
+
+.plate-grab:active { cursor: grabbing; }
