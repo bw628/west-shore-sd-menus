@@ -66,6 +66,7 @@
   var searchnavEl = document.getElementById("searchnav");
   var searchInputEl = document.getElementById("search-input");
   var searchSuggestEl = document.getElementById("search-suggest");
+  var searchClearEl = document.getElementById("search-clear");
   var footerEl = document.getElementById("footer");
 
   function pad2(n) { return String(n).padStart(2, "0"); }
@@ -391,6 +392,24 @@
     if (searchSuggestEl) searchSuggestEl.hidden = true;
   }
 
+  // The × button shows only while the search box has text.
+  function updateClearBtn() {
+    if (searchClearEl) {
+      searchClearEl.hidden = !(searchInputEl && searchInputEl.value);
+    }
+  }
+
+  // Empty the box, drop the results, and hand focus back to the input
+  // so the keyboard stays up for the next search.
+  function clearSearch() {
+    if (searchInputEl) searchInputEl.value = "";
+    searchItem = null;
+    hideSuggest();
+    updateClearBtn();
+    renderSearch();
+    if (searchInputEl) searchInputEl.focus();
+  }
+
   function showSuggest(matches) {
     if (!searchSuggestEl) return;
     if (!matches.length) { hideSuggest(); return; }
@@ -405,6 +424,7 @@
     searchItem = name;
     if (searchInputEl) searchInputEl.value = name;
     hideSuggest();
+    updateClearBtn();
     renderSearch();
   }
 
@@ -541,6 +561,7 @@
 
   if (searchInputEl) {
     searchInputEl.addEventListener("input", function () {
+      updateClearBtn();
       var q = searchInputEl.value;
       if (!String(q).trim()) {
         searchItem = null;
@@ -563,6 +584,10 @@
     searchInputEl.addEventListener("blur", function () {
       setTimeout(hideSuggest, 150);
     });
+  }
+
+  if (searchClearEl) {
+    searchClearEl.addEventListener("click", function () { clearSearch(); });
   }
 
   if (searchSuggestEl) {
@@ -610,7 +635,7 @@
     return MONTHS_SHORT[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
   }
 
-  fetch("data.json?v=5", { cache: "no-store" })
+  fetch("data.json?v=6", { cache: "no-store" })
     .then(function (resp) {
       if (!resp.ok) throw new Error("HTTP " + resp.status);
       return resp.json();

@@ -317,7 +317,7 @@ li {
   color: var(--text);
   font: inherit;
   font-size: 18px;
-  padding: 14px 18px;
+  padding: 14px 52px 14px 18px;
   box-shadow: var(--shadow);
   outline: none;
   -webkit-appearance: none;
@@ -325,6 +325,33 @@ li {
 }
 
 .searchbox input[type="search"]:focus { outline: 2px solid var(--accent); }
+
+/* Clear (×) button inside the right end of the search box.
+   Shown only when the input has text; the [hidden] rule below must
+   stay after the display rule or the flex display would override it. */
+.search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-clear:active { background: var(--seg-bg); }
+
+.search-clear[hidden] { display: none; }
 
 /* Autocomplete dropdown under the search box */
 .suggest {

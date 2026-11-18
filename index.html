@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Lunch Menu">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <main>
@@ -46,6 +46,7 @@
 
     <div class="searchbox" id="searchnav" hidden>
       <input type="search" id="search-input" placeholder="Search a food&hellip;" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search menu items">
+      <button type="button" id="search-clear" class="search-clear" aria-label="Clear search" hidden>&times;</button>
       <div id="search-suggest" class="suggest" hidden></div>
     </div>
 
@@ -67,6 +68,6 @@
     <footer class="footer" id="footer"></footer>
   </main>
   <!-- Bump the ?v=N on app.js / styles.css with every deploy so cached home-screen installs pick up the new files. -->
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>
