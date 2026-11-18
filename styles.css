@@ -816,7 +816,31 @@ body:has(.plate-dialog[open]) { overflow: hidden; }
 }
 .plate-header h2 { margin: 0; font-size: 1.35rem; }
 .plate-header p { margin: 3px 0 0; color: var(--muted); font-size: 0.82rem; }
-.plate-footer { border-top: 1px solid var(--line); min-height: 61px; }
+.plate-footer {
+  border-top: 1px solid var(--line);
+  min-height: 61px;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+.plate-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.plate-footer-actions button { font-size: 0.9rem; }
+
+#plate-clear {
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+#plate-clear:disabled {
+  color: var(--muted);
+  cursor: default;
+}
 
 .plate-header button,
 .plate-footer button {

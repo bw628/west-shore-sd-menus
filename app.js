@@ -332,6 +332,7 @@
   var plateLabel = document.getElementById("plate-label");
   var plateSummary = document.getElementById("plate-summary");
   var plateJump = document.getElementById("plate-jump");
+  var plateClear = document.getElementById("plate-clear");
   var plateItems = [];
   var plateSelection = new Set();
   var formatNutrient = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
@@ -361,6 +362,7 @@
 
     plateSummary.textContent = values.length + (values.length === 1 ? " item" : " items") +
       (calories === null ? "" : " · " + formatNutrient.format(calories) + " cal");
+    plateClear.disabled = values.length === 0;
     plateJump.hidden = calories === null && !rows;
     if (plateJump.hidden) {
       plateLabel.hidden = true;
@@ -490,6 +492,18 @@
 
   plateDragHeader.addEventListener("lostpointercapture", resetPlateDrag);
   plateDialog.addEventListener("close", resetPlateDrag);
+
+  plateClear.addEventListener("click", function () {
+    plateSelection.clear();
+    plateFoods.querySelectorAll('[aria-pressed="true"], [aria-pressed="mixed"]').forEach(function (button) {
+      button.setAttribute("aria-pressed", "false");
+    });
+    plateFoods.querySelectorAll(".plate-unavailable").forEach(function (note) {
+      note.textContent = "";
+    });
+    renderPlateLabel();
+    plateDialog.querySelector(".plate-scroll").scrollTop = 0;
+  });
 
   plateJump.addEventListener("click", function () {
     var heading = document.getElementById("plate-label-title");

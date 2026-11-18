@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="West Shore SD Menus">
 <link rel="apple-touch-icon" href="west-shore-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest?v=2">
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=20">
 </head>
 <body>
   <main>
@@ -102,7 +102,10 @@
     </div>
     <footer class="plate-footer">
       <span id="plate-summary" role="status"></span>
-      <button type="button" id="plate-jump" hidden>Nutrition Facts ↓</button>
+      <div class="plate-footer-actions">
+        <button type="button" id="plate-clear" aria-label="Clear plate" disabled>Clear</button>
+        <button type="button" id="plate-jump" hidden>Nutrition Facts ↓</button>
+      </div>
     </footer>
   </dialog>
 
@@ -124,6 +127,6 @@
   </dialog>
 
   <!-- Bump the ?v=N on app.js / styles.css with every deploy so cached home-screen installs pick up the new files. -->
-  <script src="app.js?v=19"></script>
+  <script src="app.js?v=20"></script>
 </body>
 </html>
