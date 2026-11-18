@@ -196,7 +196,7 @@ h1 {
 
 .meal-title {
   margin: 0;
-  padding: 16px 18px 0;
+  padding: 0;
   font-size: 21px;
 }
 
@@ -215,7 +215,7 @@ h1 {
 .meal-station.station-vegetable, .station-vegetable + .station-fruit { grid-column: span 1; }
 .station-vegetable + .station-fruit { border-left: 1px solid var(--line); }
 
-.meal-card > .meal-title,
+.meal-card > .meal-title-row,
 .meal-card .station-entree {
   background: var(--feature-bg);
   color: var(--feature-text);
@@ -743,7 +743,7 @@ span.cal-day.blank { background: transparent; }
     --school-secondary: #ffc52b;
   }
 
-  .meal-card > .meal-title,
+  .meal-card > .meal-title-row,
   .meal-card .station-entree {
     box-shadow: inset 8px 0 var(--school-secondary);
   }
@@ -753,3 +753,157 @@ span.cal-day.blank { background: transparent; }
     color: var(--feature-text);
   }
 }
+
+.meal-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px 0;
+}
+
+.meal-title-row:has(.plate-launch) { padding-top: 7px; }
+
+.plate-launch:focus-visible { outline-color: currentColor; }
+
+.plate-launch {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.plate-dialog {
+  width: min(calc(100% - 16px), 580px);
+  max-width: none;
+  max-height: min(790px, calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.plate-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.plate-dialog::backdrop { background: rgb(0 0 0 / 58%); }
+body:has(.plate-dialog[open]) { overflow: hidden; }
+
+.plate-header,
+.plate-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--card);
+}
+
+.plate-header { border-bottom: 1px solid var(--line); }
+.plate-header h2 { margin: 0; font-size: 1.35rem; }
+.plate-header p { margin: 3px 0 0; color: var(--muted); font-size: 0.82rem; }
+.plate-footer { border-top: 1px solid var(--line); min-height: 61px; }
+
+.plate-header button,
+.plate-footer button {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.plate-scroll {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px 16px 20px;
+}
+
+.plate-station { margin-bottom: 16px; }
+.plate-station h3 { margin: 0 0 6px; color: var(--muted); font-size: 0.86rem; }
+.plate-item + .plate-item { margin-top: 4px; }
+
+.plate-item button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.plate-item button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.plate-check {
+  display: grid;
+  place-items: center;
+  flex: 0 0 19px;
+  height: 19px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.plate-item button[aria-pressed="true"] .plate-check { color: var(--accent); }
+.plate-item button[aria-pressed="true"] .plate-check::before { content: "✓"; }
+
+.plate-unavailable { margin: 0; color: var(--muted); font-size: 0.8rem; }
+.plate-unavailable:not(:empty) { padding: 5px 12px 3px; }
+#plate-summary { font-variant-numeric: tabular-nums; font-weight: 700; }
+
+.plate-label {
+  padding: 12px;
+  border: 1px solid var(--text);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+.plate-label h3 {
+  margin: 0;
+  padding-bottom: 4px;
+  border-bottom: 6px solid var(--text);
+  font-size: clamp(1.6rem, 7vw, 2.15rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.plate-calories {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--text);
+  font-size: 1.25rem;
+}
+
+.plate-calories b { font-size: 1.8em; }
+.plate-label table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.plate-label th, .plate-label td { padding: 5px 0; border-bottom: 1px solid var(--line); }
+.plate-label th { text-align: left; }
+.plate-label td, .plate-label th:not(:first-child) { text-align: right; padding-left: 5px; }
+.plate-label thead th { color: var(--muted); font-size: 0.75rem; }
+.plate-label .nutrient-indent th { padding-left: 10px; font-weight: 400; }
+.plate-footnote { margin: 8px 0 0; color: var(--muted); font-size: 0.75rem; }

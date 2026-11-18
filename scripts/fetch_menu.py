@@ -20,6 +20,7 @@ elementary" slugs 404. data.json is kept as a copy of Highland's file
 so older cached installs of the app still load.
 """
 import json
+from math import isfinite
 import os
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
@@ -83,30 +84,61 @@ def fetch_week(slug, menu_type, d):
         return json.load(resp)
 
 
-def extract_stations(day):
-    """Pull item names for every station of one Nutrislice day object.
+# Keep numeric quantities in the units used by the feed. Vitamin D's
+# legacy mg_vitamin_d field does not reliably contain milligrams.
+NUTRIENTS = (
+    "calories", "g_fat", "g_saturated_fat", "g_trans_fat", "mg_cholesterol",
+    "mg_sodium", "g_carbs", "g_fiber", "g_sugar", "g_added_sugar", "g_protein",
+    "mcg_vitamin_d", "mg_calcium", "mg_iron", "mg_potassium",
+    "mcg_vitamin_a", "mg_vitamin_c",
+)
 
-    Returns {station_key: [deduped names, capped at MAX_ITEMS]}.
-    """
+
+def extract_nutrition(food, menu_item):
+    if not food.get("has_nutrition_info"):
+        return {}
+    values = food.get("rounded_nutrition_info") or {}
+    amount = menu_item.get("serving_size_amount")
+    unit = menu_item.get("serving_size_unit")
+    if amount is not None and unit:
+        matches = [
+            size for size in food.get("food_sizes") or []
+            if str(size.get("serving_size_amount")) == str(amount)
+            and size.get("serving_size_unit") == unit
+        ]
+        if len(matches) == 1:
+            values = matches[0].get("nutrition_info") or {}
+        elif (str((food.get("serving_size_info") or {}).get("serving_size_amount")),
+              (food.get("serving_size_info") or {}).get("serving_size_unit")) != (str(amount), unit):
+            return {}
+    return {
+        key: value for key in NUTRIENTS
+        if type(value := values.get(key)) in (int, float) and isfinite(value) and value >= 0
+    }
+
+
+def extract_stations(day):
+    """Return station names and optional nutrition for the same menu items."""
     out = {}
+    nutrition = {}
     current = None
     for item in (day or {}).get("menu_items", []) or []:
         if item.get("is_station_header"):
             label = (item.get("text") or "").strip().lower()
             current = STATION_KEYS.get(label)
             continue
-        name = (item.get("food") or {}).get("name")
-        if name and current:
-            out.setdefault(current, []).append(name)
-    for key, names in out.items():
-        seen = set()
-        deduped = []
-        for name in names:
-            if name not in seen:
-                seen.add(name)
-                deduped.append(name)
-        out[key] = deduped[:MAX_ITEMS]
-    return out
+        food = item.get("food") or {}
+        name = food.get("name")
+        if not name or not current:
+            continue
+        names = out.setdefault(current, [])
+        if name in names or len(names) >= MAX_ITEMS:
+            continue
+        names.append(name)
+        values = extract_nutrition(food, item)
+        if values:
+            nutrition.setdefault(current, {})[name] = values
+    return out, nutrition
 
 
 def sunday_of(d):
@@ -133,7 +165,8 @@ def fetch_school(name, slug):
                         "lunch": {k: [] for k in LUNCH_SCHEMA},
                     },
                 )
-                stations = extract_stations(day)
+                stations, nutrition = extract_stations(day)
+                entry.setdefault("nutrition", {})[menu_type] = nutrition
                 schema = (
                     BREAKFAST_SCHEMA if menu_type == "breakfast" else LUNCH_SCHEMA
                 )

@@ -257,9 +257,14 @@
       inner + "</details>";
   }
 
-  function mealCard(meal, title, sections) {
-    var html = '<section class="card meal-card"><h2 class="card-title meal-title">' +
-      title + '</h2><div class="meal-stations">';
+  function mealCard(meal, title, sections, plateKey) {
+    var plateButton = plateKey && !mealIsEmpty(meal, sections.concat(EXTRAS))
+      ? '<button type="button" class="plate-launch" data-open-plate="' + plateKey +
+        '" aria-haspopup="dialog" aria-label="My Plate for ' + title.toLowerCase() + '">My Plate</button>'
+      : "";
+    var html = '<section class="card meal-card"><div class="meal-title-row">' +
+      '<h2 class="card-title meal-title">' + title + '</h2>' + plateButton +
+      '</div><div class="meal-stations">';
     sections.forEach(function (section) {
       html += '<div class="meal-station station-' + section[1] + '">' +
         '<h3 class="subheading">' + escapeHTML(section[0]) + '</h3>' +
@@ -269,9 +274,9 @@
   }
 
   // Keep the saved meal-order preference in both views.
-  function mealCards(entry) {
-    var breakfast = mealCard(entry.breakfast, "Breakfast", BREAKFAST_MAINS);
-    var lunch = mealCard(entry.lunch, "Lunch", LUNCH_MAINS);
+  function mealCards(entry, showPlate) {
+    var breakfast = mealCard(entry.breakfast, "Breakfast", BREAKFAST_MAINS, showPlate && entry.nutrition && "breakfast");
+    var lunch = mealCard(entry.lunch, "Lunch", LUNCH_MAINS, showPlate && entry.nutrition && "lunch");
     return lunchFirst ? lunch + breakfast : breakfast + lunch;
   }
 
@@ -297,8 +302,140 @@
       contentEl.innerHTML = noSchoolCard();
       return;
     }
-    contentEl.innerHTML = mealCards(entry);
+    contentEl.innerHTML = mealCards(entry, true);
   }
+
+  // FDA general-label Daily Values. Total sugars, trans fat and
+  // unadjusted protein grams are shown without a percentage.
+  var NUTRITION_ROWS = [
+    ["calories", "Calories", ""],
+    ["g_fat", "Total Fat", "g", 78],
+    ["g_saturated_fat", "Saturated Fat", "g", 20, true],
+    ["g_trans_fat", "Trans Fat", "g", null, true],
+    ["mg_cholesterol", "Cholesterol", "mg", 300],
+    ["mg_sodium", "Sodium", "mg", 2300],
+    ["g_carbs", "Total Carbohydrate", "g", 275],
+    ["g_fiber", "Dietary Fiber", "g", 28, true],
+    ["g_sugar", "Total Sugars", "g", null, true],
+    ["g_added_sugar", "Added Sugars", "g", 50, true],
+    ["g_protein", "Protein", "g"],
+    ["mcg_vitamin_d", "Vitamin D", "mcg", 20],
+    ["mg_calcium", "Calcium", "mg", 1300],
+    ["mg_iron", "Iron", "mg", 18],
+    ["mg_potassium", "Potassium", "mg", 4700],
+    ["mcg_vitamin_a", "Vitamin A", "mcg", 900],
+    ["mg_vitamin_c", "Vitamin C", "mg", 90]
+  ];
+
+  var plateDialog = document.getElementById("plate-dialog");
+  var plateFoods = document.getElementById("plate-foods");
+  var plateLabel = document.getElementById("plate-label");
+  var plateSummary = document.getElementById("plate-summary");
+  var plateJump = document.getElementById("plate-jump");
+  var plateItems = [];
+  var plateSelection = new Set();
+  var formatNutrient = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
+
+  function hasNutrient(values, key) {
+    return values && Number.isFinite(values[key]) && values[key] >= 0;
+  }
+
+  function renderPlateLabel() {
+    var values = Array.from(plateSelection, function (index) { return plateItems[index]; });
+    var calories = null;
+    var rows = "";
+    if (values.length) {
+      NUTRITION_ROWS.forEach(function (row) {
+        var key = row[0];
+        if (!values.every(function (item) { return hasNutrient(item, key); })) return;
+        var total = values.reduce(function (sum, item) { return sum + item[key]; }, 0);
+        if (key === "calories") {
+          calories = Math.round(total);
+          return;
+        }
+        rows += '<tr' + (row[4] ? ' class="nutrient-indent"' : "") + '><th scope="row">' +
+          row[1] + '</th><td>' + formatNutrient.format(total) + ' ' + row[2] +
+          '</td><td>' + (row[3] ? Math.round(total / row[3] * 100) + '%' : '') + '</td></tr>';
+      });
+    }
+
+    plateSummary.textContent = values.length + (values.length === 1 ? " item" : " items") +
+      (calories === null ? "" : " · " + formatNutrient.format(calories) + " cal");
+    plateJump.hidden = calories === null && !rows;
+    if (plateJump.hidden) {
+      plateLabel.hidden = true;
+      plateLabel.innerHTML = "";
+      return;
+    }
+
+    plateLabel.hidden = false;
+    plateLabel.innerHTML = '<h3 id="plate-label-title" tabindex="-1">Nutrition Facts</h3>' +
+      (calories === null ? "" : '<div class="plate-calories"><strong>Calories</strong><b>' +
+        formatNutrient.format(calories) + '</b></div>') +
+      (rows ? '<table><thead><tr><th scope="col">Nutrient</th><th scope="col">Amount</th>' +
+        '<th scope="col">% DV</th></tr></thead><tbody>' + rows + '</tbody></table>' : '') +
+      '<p class="plate-footnote">Estimated from one listed serving of each selected food. ' +
+      'Percent Daily Values use the standard adult reference.</p>';
+  }
+
+  function openPlate(mealKey) {
+    var entry = normalizeEntry(dayEntry(selected));
+    if (!entry || plateDialog.open) return;
+    var meal = entry[mealKey];
+    var sections = (mealKey === "lunch" ? LUNCH_MAINS : BREAKFAST_MAINS).concat(EXTRAS);
+    var nutrition = (entry.nutrition || {})[mealKey] || {};
+    plateItems = [];
+    plateSelection.clear();
+    var markup = sections.map(function (section) {
+      var station = section[1];
+      var items = stationItems(meal, station);
+      if (!items.length) return "";
+      return '<section class="plate-station"><h3>' + escapeHTML(section[0]) + '</h3>' +
+        items.map(function (name) {
+          var stationNutrition = nutrition[station] || {};
+          var values = Object.prototype.hasOwnProperty.call(stationNutrition, name)
+            ? stationNutrition[name] : null;
+          var available = NUTRITION_ROWS.some(function (row) { return hasNutrient(values, row[0]); });
+          var index = plateItems.push(available ? values : null) - 1;
+          return '<div class="plate-item"><button type="button" data-plate-item="' + index +
+            '" aria-pressed="false"><span>' + escapeHTML(name) +
+            '</span><span class="plate-check" aria-hidden="true"></span></button>' +
+            '<p class="plate-unavailable" role="status"></p></div>';
+        }).join("") + '</section>';
+    }).join("");
+    if (!markup) return;
+
+    document.getElementById("plate-meal-date").textContent =
+      (mealKey === "lunch" ? "Lunch" : "Breakfast") + " · " + longDate(selected);
+    plateFoods.innerHTML = markup;
+    renderPlateLabel();
+    plateDialog.showModal();
+    plateDialog.querySelector(".plate-scroll").scrollTop = 0;
+  }
+
+  plateFoods.addEventListener("click", function (e) {
+    var button = e.target.closest("[data-plate-item]");
+    if (!button) return;
+    var index = Number(button.dataset.plateItem);
+    if (!plateItems[index]) {
+      button.parentElement.querySelector(".plate-unavailable").textContent = "Nutrition unavailable";
+      return;
+    }
+    if (plateSelection.has(index)) plateSelection.delete(index);
+    else plateSelection.add(index);
+    button.setAttribute("aria-pressed", String(plateSelection.has(index)));
+    renderPlateLabel();
+  });
+
+  plateJump.addEventListener("click", function () {
+    var heading = document.getElementById("plate-label-title");
+    if (heading) heading.focus();
+  });
+
+  contentEl.addEventListener("click", function (e) {
+    var button = e.target.closest("[data-open-plate]");
+    if (button && view === "day") openPlate(button.dataset.openPlate);
+  });
 
   function mondayOf(d) {
     return addDays(d, -((d.getDay() + 6) % 7));
