@@ -94,6 +94,28 @@ NUTRIENTS = (
 )
 
 
+# Reference estimate for food 1422711, whose one-sandwich entry reports
+# roughly twice the manufacturer's calories. The district SKU is unconfirmed.
+# https://www.smuckerawayfromhome.com/products/snacks/uncrustables-2.6oz-peanut-butter-and-grape-sandwich-72-count-case
+UNCRUSTABLE_NUTRITION = {
+    "calories": 300,
+    "g_fat": 16,
+    "g_saturated_fat": 3.5,
+    "g_trans_fat": 0,
+    "mg_cholesterol": 0,
+    "mg_sodium": 270,
+    "g_carbs": 32,
+    "g_fiber": 4,
+    "g_sugar": 14,
+    "g_added_sugar": 12,
+    "g_protein": 9,
+    "mcg_vitamin_d": 0,
+    "mg_calcium": 43,
+    "mg_iron": 1,
+    "mg_potassium": 235,
+}
+
+
 def extract_nutrition(food, menu_item):
     if not food.get("has_nutrition_info"):
         return {}
@@ -140,6 +162,8 @@ def extract_stations(day):
         if amount is None or not unit:
             serving = food.get("serving_size_info") or {}
             amount, unit = serving.get("serving_size_amount"), serving.get("serving_size_unit")
+        if food.get("id") == 1422711 and str(amount) in ("1", "1.0") and unit == "each":
+            values = UNCRUSTABLE_NUTRITION.copy()
         if amount is not None and str(amount).strip() and unit:
             values["serving_size"] = f"{amount} {unit}"
         if values:
