@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>School Lunch Menu — Highland Elementary</title>
-<meta name="description" content="Highland Elementary cafeteria menu, by day or by week.">
+<title>School Lunch Menu — West Shore School District</title>
+<meta name="description" content="West Shore School District cafeteria menu, by day or by week. Pick your school.">
 <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,14 +13,14 @@
 <meta name="apple-mobile-web-app-title" content="Lunch Menu">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <main>
     <header class="header">
       <div class="header-titles">
         <h1>School Lunch Menu</h1>
-        <p class="subtitle">Highland Elementary</p>
+        <button type="button" id="school-btn" class="school-btn" aria-haspopup="dialog" aria-label="Choose a school">Highland Primary School <span class="chev">&#8964;</span></button>
       </div>
       <a class="balance-link" href="https://linqconnect.com" target="_blank" rel="noopener">Balance</a>
     </header>
@@ -67,7 +67,18 @@
 
     <footer class="footer" id="footer"></footer>
   </main>
+
+  <div id="school-sheet" class="sheet" hidden role="dialog" aria-modal="true" aria-label="Choose a school">
+    <div id="school-backdrop" class="sheet-backdrop"></div>
+    <div class="sheet-card">
+      <div class="sheet-head">
+        <span class="sheet-title">Choose a school</span>
+        <button type="button" id="school-close" class="sheet-close" aria-label="Close">&times;</button>
+      </div>
+      <ul id="school-list" class="school-list"></ul>
+    </div>
+  </div>
   <!-- Bump the ?v=N on app.js / styles.css with every deploy so cached home-screen installs pick up the new files. -->
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

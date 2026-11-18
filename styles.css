@@ -66,11 +66,28 @@ h1 {
   letter-spacing: -0.8px;
 }
 
-.subtitle {
+/* Tappable school name in the header — opens the school picker */
+.school-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   margin: 6px 0 0;
-  font-size: 17px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--muted);
+  font: inherit;
+  font-size: 17px;
+  text-align: left;
+  cursor: pointer;
 }
+
+.school-btn .chev {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.school-btn:active { opacity: 0.6; }
 
 /* Segmented Day / Week toggle */
 .segmented {
@@ -302,6 +319,94 @@ li {
 }
 
 .footer a { color: inherit; }
+
+/* School picker bottom sheet. The [hidden] rule must stay after the
+   display rules or it would be overridden. */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+
+.sheet[hidden] { display: none; }
+
+.sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.sheet-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 640px;
+  margin: 0 auto;
+  max-height: 72vh;
+  overflow-y: auto;
+  background: var(--card);
+  border-radius: 22px 22px 0 0;
+  padding: 8px 0 calc(env(safe-area-inset-bottom) + 16px);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 19px 6px;
+}
+
+.sheet-title {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.sheet-close {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--seg-bg);
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+
+.school-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.school-list li { margin: 0; }
+
+.school-list li + li { border-top: 1px solid var(--seg-bg); }
+
+.school-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 18px;
+  text-align: left;
+  padding: 13px 19px;
+  cursor: pointer;
+}
+
+.school-item.current {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.school-check { font-size: 20px; }
 
 /* Food search */
 .searchbox {

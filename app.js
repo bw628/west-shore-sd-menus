@@ -40,6 +40,56 @@
   var lunchFirst = readPref("msp-lunch-first", true);
   var after6Tomorrow = readPref("msp-after6-tomorrow", true);
 
+  // District schools, verified live against the Nutrislice schools
+  // endpoint. Highland first: it is the default. Names are the
+  // official Nutrislice names (the district's schools are "Primary"
+  // and "Intermediate" schools).
+  var SCHOOLS = [
+    ["highland-elementary", "Highland Primary School"],
+    ["cedar-cliff-high-school", "Cedar Cliff High School"],
+    ["crossroads-middle-school", "Crossroads Middle School"],
+    ["fairview-intermediate", "Fairview Intermediate School"],
+    ["fishing-creek-elementary", "Fishing Creek Primary School"],
+    ["hillside-elementary", "Hillside Primary School"],
+    ["newberry-elementary", "Newberry Primary School"],
+    ["new-cumberland-middle-school", "New Cumberland Middle School"],
+    ["old-trail-intermediate", "Old Trail Intermediate School"],
+    ["red-land-high-school", "Red Land High School"],
+    ["redmill-elementary", "Red Mill Primary School"],
+    ["rossmoyne-elementary", "Rossmoyne Primary School"],
+    ["washington-heights-elementary", "Washington Heights Primary School"]
+  ];
+  var DEFAULT_SCHOOL = "highland-elementary";
+
+  function readStringPref(key, def) {
+    try {
+      var v = localStorage.getItem(key);
+      return v === null ? def : v;
+    } catch (e) { return def; }
+  }
+  function writeStringPref(key, val) {
+    try { localStorage.setItem(key, val); } catch (e) {}
+  }
+  function schoolName(slug) {
+    for (var i = 0; i < SCHOOLS.length; i++) {
+      if (SCHOOLS[i][0] === slug) return SCHOOLS[i][1];
+    }
+    return SCHOOLS[0][1];
+  }
+  function validSchool(slug) {
+    for (var i = 0; i < SCHOOLS.length; i++) {
+      if (SCHOOLS[i][0] === slug) return true;
+    }
+    return false;
+  }
+
+  // Each device keeps its own school (localStorage). The pick is
+  // per-phone, so other parents sharing the app see their own school,
+  // not Ben's. A saved slug that is no longer in the list falls back
+  // to Highland.
+  var school = readStringPref("msp-school", DEFAULT_SCHOOL);
+  if (!validSchool(school)) school = DEFAULT_SCHOOL;
+
   // Every fresh load opens on Day view showing today. The toggle works
   // within the session, but the view is never restored from storage.
   var view = "day";
@@ -67,6 +117,11 @@
   var searchInputEl = document.getElementById("search-input");
   var searchSuggestEl = document.getElementById("search-suggest");
   var searchClearEl = document.getElementById("search-clear");
+  var schoolBtnEl = document.getElementById("school-btn");
+  var schoolSheetEl = document.getElementById("school-sheet");
+  var schoolBackdropEl = document.getElementById("school-backdrop");
+  var schoolListEl = document.getElementById("school-list");
+  var schoolCloseEl = document.getElementById("school-close");
   var footerEl = document.getElementById("footer");
 
   function pad2(n) { return String(n).padStart(2, "0"); }
@@ -635,31 +690,101 @@
     return MONTHS_SHORT[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
   }
 
-  fetch("data.json?v=6", { cache: "no-store" })
-    .then(function (resp) {
-      if (!resp.ok) throw new Error("HTTP " + resp.status);
-      return resp.json();
-    })
-    .then(function (json) {
-      data = json;
-      buildItemList();
-      // If the user already typed before the data arrived, offer
-      // suggestions for what is in the box now.
-      if (searchInputEl && searchInputEl.value) {
-        showSuggest(matchItems(searchInputEl.value));
-      }
-      var updated = formatUpdated(data.generated_at);
-      footerEl.innerHTML = updated
-        ? "Menu updated " + escapeHTML(updated) +
-          " &middot; Menus via <a href=\"https://www.nutrislice.com/\" rel=\"noopener\">Nutrislice</a>"
-        : "Menus via Nutrislice";
-      render();
-    })
-    .catch(function () {
-      contentEl.innerHTML =
-        '<div class="card"><div class="card-title">\uD83C\uDF7D\uFE0F Meals</div>' +
-        '<p class="muted">Menu data couldn&rsquo;t be loaded. Check your connection and try again.</p></div>';
+  function updateSchoolChrome() {
+    var name = schoolName(school);
+    if (schoolBtnEl) {
+      schoolBtnEl.innerHTML = escapeHTML(name) +
+        ' <span class="chev">\u2304</span>';
+    }
+    document.title = "School Lunch Menu \u2014 " + name;
+  }
+
+  // Each school has its own menu file under data/.
+  function loadSchool(slug) {
+    return fetch("data/" + slug + ".json?v=7", { cache: "no-store" })
+      .then(function (resp) {
+        if (!resp.ok) throw new Error("HTTP " + resp.status);
+        return resp.json();
+      })
+      .then(function (json) {
+        data = json;
+        buildItemList();
+        // If the user already typed before the data arrived, offer
+        // suggestions for what is in the box now.
+        if (searchInputEl && searchInputEl.value) {
+          showSuggest(matchItems(searchInputEl.value));
+        }
+        var updated = formatUpdated(data.generated_at);
+        footerEl.innerHTML = updated
+          ? "Menu updated " + escapeHTML(updated) +
+            " &middot; Menus via <a href=\"https://www.nutrislice.com/\" rel=\"noopener\">Nutrislice</a>"
+          : "Menus via Nutrislice";
+        render();
+      })
+      .catch(function () {
+        contentEl.innerHTML =
+          '<div class="card"><div class="card-title">\uD83C\uDF7D\uFE0F Meals</div>' +
+          '<p class="muted">Menu data couldn&rsquo;t be loaded. Check your connection and try again.</p></div>';
+      });
+  }
+
+  // --- School picker (bottom sheet) ---
+  function openSchoolPicker() {
+    if (!schoolSheetEl || !schoolListEl) return;
+    schoolListEl.innerHTML = SCHOOLS.map(function (s) {
+      var isCurrent = s[0] === school;
+      return '<li><button type="button" class="school-item' +
+        (isCurrent ? " current" : "") + '" data-school="' + s[0] + '"' +
+        (isCurrent ? ' aria-current="true"' : "") + ">" +
+        '<span class="school-name">' + escapeHTML(s[1]) + "</span>" +
+        (isCurrent ? '<span class="school-check">\u2713</span>' : "") +
+        "</button></li>";
+    }).join("");
+    schoolSheetEl.hidden = false;
+  }
+
+  function closeSchoolPicker() {
+    if (schoolSheetEl) schoolSheetEl.hidden = true;
+  }
+
+  function selectSchool(slug) {
+    if (!validSchool(slug)) return;
+    closeSchoolPicker();
+    if (slug === school) return;
+    school = slug;
+    writeStringPref("msp-school", school);
+    updateSchoolChrome();
+    // Drop the old school's search state before the new data lands.
+    searchItem = null;
+    if (searchInputEl) searchInputEl.value = "";
+    hideSuggest();
+    updateClearBtn();
+    contentEl.innerHTML =
+      '<div class="card"><p class="muted">Loading menu&hellip;</p></div>';
+    loadSchool(school);
+  }
+
+  if (schoolBtnEl) {
+    schoolBtnEl.addEventListener("click", function () { openSchoolPicker(); });
+  }
+  if (schoolCloseEl) {
+    schoolCloseEl.addEventListener("click", function () { closeSchoolPicker(); });
+  }
+  if (schoolBackdropEl) {
+    schoolBackdropEl.addEventListener("click", function () { closeSchoolPicker(); });
+  }
+  if (schoolListEl) {
+    schoolListEl.addEventListener("click", function (e) {
+      var slug = closestData(e.target, "school");
+      if (slug) selectSchool(slug);
     });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeSchoolPicker();
+  });
+
+  updateSchoolChrome();
+  loadSchool(school);
 
   render();
 })();
