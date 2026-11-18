@@ -521,6 +521,107 @@
     return html + "</div>";
   }
 
+  var printDialog = document.getElementById("print-dialog");
+  var printFrame = document.getElementById("print-frame");
+  var printOpen = document.getElementById("print-open");
+  var printSave = document.getElementById("print-save");
+  var printShare = document.getElementById("print-share");
+  var printStatus = document.getElementById("print-status");
+  var printUrl = null;
+  var printFile = null;
+  var printRequest = 0;
+
+  function resetPrintPreview() {
+    printRequest++;
+    printFrame.hidden = true;
+    printFrame.removeAttribute("src");
+    printOpen.hidden = true;
+    printOpen.removeAttribute("href");
+    printSave.hidden = true;
+    printSave.removeAttribute("href");
+    printShare.hidden = true;
+    printFile = null;
+    if (printUrl) URL.revokeObjectURL(printUrl);
+    printUrl = null;
+  }
+
+  function printWeekText(monday, friday) {
+    var start = MONTHS[monday.getMonth()] + " " + monday.getDate();
+    if (monday.getFullYear() !== friday.getFullYear()) start += ", " + monday.getFullYear();
+    var end = monday.getMonth() === friday.getMonth() ? "" : MONTHS[friday.getMonth()] + " ";
+    return start + "-" + end + friday.getDate() + ", " + friday.getFullYear();
+  }
+
+  document.getElementById("print-btn").addEventListener("click", async function () {
+    if (printDialog.open) return;
+    resetPrintPreview();
+    var request = printRequest;
+    var monday = mondayOf(selected);
+    var weekText = printWeekText(monday, addDays(monday, 4));
+    var name = schoolName(school);
+    var filename = "west-shore-menu-" + school + "-" + iso(monday) + ".pdf";
+    document.getElementById("print-week").textContent = name + " · " + weekText;
+    printStatus.textContent = "Preparing the PDF…";
+    printStatus.hidden = false;
+    printDialog.showModal();
+
+    if (!data) {
+      printStatus.textContent = "The menu is unavailable. Close the preview and try again.";
+      return;
+    }
+
+    var days = Array.from({length: 5}, function (_, index) {
+      var date = addDays(monday, index);
+      var entry = normalizeEntry(dayEntry(date)) || {};
+      return {
+        weekday: WEEKDAYS[date.getDay()],
+        shortDate: MONTHS_SHORT[date.getMonth()] + " " + date.getDate(),
+        breakfast: entry.breakfast,
+        lunch: entry.lunch
+      };
+    });
+    var theme = getComputedStyle(document.documentElement);
+    var primary = theme.getPropertyValue("--school-ink").trim() || "#17634c";
+    var secondary = theme.getPropertyValue("--school-secondary").trim() || "#519e88";
+
+    try {
+      var { createWeeklyMenuPdf } = await import("./weekly-print.mjs?v=1");
+      var bytes = await createWeeklyMenuPdf({school: name, weekText, days, primary, secondary});
+      if (request !== printRequest || !printDialog.open) return;
+      printFile = new File([bytes], filename, {type: "application/pdf"});
+      printUrl = URL.createObjectURL(printFile);
+      printFrame.src = printUrl;
+      printOpen.href = printUrl;
+      printSave.href = printUrl;
+      printSave.download = filename;
+      printFrame.hidden = false;
+      printOpen.hidden = false;
+      printSave.hidden = false;
+      if (navigator.canShare && navigator.canShare({files: [printFile]})) printShare.hidden = false;
+      printStatus.hidden = true;
+    } catch (error) {
+      if (request === printRequest && printDialog.open) {
+        printStatus.textContent = "The PDF couldn’t be prepared. Close the preview and try again.";
+      }
+    }
+  });
+
+  printShare.addEventListener("click", async function () {
+    if (!printFile) return;
+    try {
+      await navigator.share({files: [printFile]});
+    } catch (error) {
+      if (error.name !== "AbortError" && printDialog.open) {
+        printStatus.textContent = "Sharing is unavailable. Use Open PDF to view or print it.";
+        printStatus.hidden = false;
+      }
+    }
+  });
+
+  printDialog.addEventListener("close", function () {
+    if (!printDialog.open) resetPrintPreview();
+  });
+
   function renderWeek() {
     var monday = mondayOf(selected);
     var friday = addDays(monday, 4);
