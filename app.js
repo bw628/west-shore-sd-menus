@@ -6,8 +6,28 @@
   var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   var MONTHS_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+  // Mains shown as regular sections; only condiments + milk fold away.
+  var BREAKFAST_MAINS = [
+    ["Entr\u00e9e", "entree"],
+    ["Daily Serve", "daily_serve"],
+    ["Fruit", "fruit"]
+  ];
+  var LUNCH_MAINS = [
+    ["Entr\u00e9e", "entree"],
+    ["Daily Serve Entr\u00e9e", "daily_serve"],
+    ["Express", "express"],
+    ["Vegetable", "vegetable"],
+    ["Fruit", "fruit"]
+  ];
+  var EXTRAS = [
+    ["Condiments", "condiments"],
+    ["Milk", "milk"]
+  ];
+
   var data = null;
-  var view = localStorage.getItem("msp-view") || "day";
+  // Every fresh load opens on Day view showing today. The toggle works
+  // within the session, but the view is never restored from storage.
+  var view = "day";
   var selected = startOfDay(new Date());
 
   var contentEl = document.getElementById("content");
@@ -45,6 +65,18 @@
     return g === 0 || g === 6;
   }
 
+  function isWeekday(d) {
+    return !isWeekend(d);
+  }
+
+  // Step one calendar day, skipping Sat/Sun entirely: Friday -> Monday,
+  // Monday -> Friday.
+  function stepDay(d, dir) {
+    var out = addDays(d, dir);
+    while (isWeekend(out)) out = addDays(out, dir);
+    return out;
+  }
+
   function longDate(d) {
     return WEEKDAYS[d.getDay()] + ", " + MONTHS[d.getMonth()] + " " + d.getDate();
   }
@@ -76,46 +108,105 @@
     return data.days[iso(d)] || null;
   }
 
+  // Normalize an entry to the current per-station shape. Tolerates the
+  // older flat schema (breakfast / lunch_entree / lunch_express arrays)
+  // in case a stale data.json is served.
+  function normalizeEntry(entry) {
+    if (!entry) return null;
+    if (Array.isArray(entry.breakfast) || Array.isArray(entry.lunch_entree)) {
+      return {
+        breakfast: {
+          entree: entry.breakfast || [],
+          daily_serve: [],
+          fruit: [],
+          condiments: [],
+          milk: []
+        },
+        lunch: {
+          entree: entry.lunch_entree || [],
+          daily_serve: [],
+          express: entry.lunch_express || [],
+          vegetable: [],
+          fruit: [],
+          condiments: [],
+          milk: []
+        }
+      };
+    }
+    return entry;
+  }
+
+  function stationItems(meal, key) {
+    if (!meal || !Array.isArray(meal[key])) return [];
+    return meal[key];
+  }
+
+  function mealIsEmpty(meal, sections) {
+    if (!meal) return true;
+    for (var i = 0; i < sections.length; i++) {
+      if (stationItems(meal, sections[i][1]).length) return false;
+    }
+    return true;
+  }
+
   function dayIsEmpty(entry) {
-    return !entry ||
-      ((!entry.breakfast || !entry.breakfast.length) &&
-       (!entry.lunch_entree || !entry.lunch_entree.length) &&
-       (!entry.lunch_express || !entry.lunch_express.length));
+    if (!entry) return true;
+    var all = BREAKFAST_MAINS.concat(LUNCH_MAINS).concat(EXTRAS);
+    var b = entry.breakfast || {};
+    var l = entry.lunch || {};
+    return mealIsEmpty(b, all) && mealIsEmpty(l, all);
+  }
+
+  function extrasHTML(meal) {
+    var inner = "";
+    EXTRAS.forEach(function (sec) {
+      var items = stationItems(meal, sec[1]);
+      if (!items.length) return;
+      inner += '<div class="subheading">' + escapeHTML(sec[0]) + "</div>" +
+        mealList(items);
+    });
+    if (!inner) return "";
+    return '<details class="extras"><summary>Condiments &amp; milk</summary>' +
+      inner + "</details>";
   }
 
   function mealCards(entry) {
-    return (
-      '<div class="card"><div class="card-title">🥞 Breakfast</div>' +
-      mealList(entry.breakfast) +
-      "</div>" +
-      '<div class="card"><div class="card-title">🍎 Lunch</div>' +
-      '<div class="subheading">Entrée</div>' +
-      mealList(entry.lunch_entree) +
-      '<div class="subheading">Express</div>' +
-      mealList(entry.lunch_express) +
-      "</div>"
-    );
+    var b = entry.breakfast || {};
+    var l = entry.lunch || {};
+    var html = '<div class="card"><div class="card-title">\uD83E\uDD5E Breakfast</div>';
+    BREAKFAST_MAINS.forEach(function (sec) {
+      html += '<div class="subheading">' + escapeHTML(sec[0]) + "</div>" +
+        mealList(stationItems(b, sec[1]));
+    });
+    html += extrasHTML(b) + "</div>";
+
+    html += '<div class="card"><div class="card-title">\uD83C\uDF4E Lunch</div>';
+    LUNCH_MAINS.forEach(function (sec) {
+      html += '<div class="subheading">' + escapeHTML(sec[0]) + "</div>" +
+        mealList(stationItems(l, sec[1]));
+    });
+    html += extrasHTML(l) + "</div>";
+    return html;
+  }
+
+  function noSchoolCard() {
+    return '<div class="card"><div class="card-title">\uD83C\uDF7D\uFE0F Meals</div>' +
+      '<p class="muted">No school</p></div>';
   }
 
   function renderDay() {
     dateLabelEl.textContent = longDate(selected);
     if (isWeekend(selected)) {
+      // Fallback only: the day arrows skip weekends, so this is reached
+      // only if the selected date lands on a weekend some other way.
       contentEl.innerHTML =
-        '<div class="card"><div class="card-title">🍽️ Meals</div>' +
-        '<p class="muted">Weekend — no school.</p></div>';
+        '<div class="card"><div class="card-title">\uD83C\uDF7D\uFE0F Meals</div>' +
+        '<p class="muted">Weekend \u2014 no school.</p></div>';
       return;
     }
-    var entry = dayEntry(selected);
-    if (!entry) {
-      contentEl.innerHTML =
-        '<div class="card"><div class="card-title">🍽️ Meals</div>' +
-        '<p class="muted">Menu not loaded for this date yet. Check back soon — the menu refreshes every weekday morning.</p></div>';
-      return;
-    }
-    if (dayIsEmpty(entry)) {
-      contentEl.innerHTML =
-        '<div class="card"><div class="card-title">🍽️ Meals</div>' +
-        '<p class="muted">No menu posted for this day.</p></div>';
+    var entry = normalizeEntry(dayEntry(selected));
+    if (!entry || dayIsEmpty(entry)) {
+      contentEl.innerHTML = noSchoolCard();
       return;
     }
     contentEl.innerHTML = mealCards(entry);
@@ -125,30 +216,48 @@
     return addDays(d, -((d.getDay() + 6) % 7));
   }
 
+  function dayCardHTML(d) {
+    var dISO = iso(d);
+    var todayISO = iso(startOfDay(new Date()));
+    var isToday = dISO === todayISO;
+    var entry = normalizeEntry(dayEntry(d));
+    var html = '<div class="card' + (isToday ? " today" : "") + '">' +
+      '<div class="day-heading">' + escapeHTML(shortDate(d)) +
+      (isToday ? '<span class="today-tag">Today</span>' : "") + "</div>";
+    if (!entry || dayIsEmpty(entry)) {
+      html += '<p class="muted">No school</p>';
+    } else {
+      html += mealCards(entry);
+    }
+    return html + "</div>";
+  }
+
   function renderWeek() {
     var monday = mondayOf(selected);
     var friday = addDays(monday, 4);
     weekLabelEl.textContent =
       MONTHS_SHORT[monday.getMonth()] + " " + monday.getDate() +
-      " – " + MONTHS_SHORT[friday.getMonth()] + " " + friday.getDate();
-    var todayISO = iso(startOfDay(new Date()));
+      " \u2013 " + MONTHS_SHORT[friday.getMonth()] + " " + friday.getDate();
+    var today = startOfDay(new Date());
+    var isCurrentWeek = iso(mondayOf(today)) === iso(monday);
+    // Anchor for "the rest of this week": today on weekdays; next Monday
+    // on weekends (the current week is over, so next week is the one
+    // that matters).
+    var anchor = today;
+    if (isCurrentWeek && isWeekend(today)) anchor = addDays(monday, 7);
     var html = "";
+    var earlier = "";
     for (var i = 0; i < 5; i++) {
       var d = addDays(monday, i);
-      var dISO = iso(d);
-      var isToday = dISO === todayISO;
-      var entry = dayEntry(d);
-      html += '<div class="card' + (isToday ? " today" : "") + '">' +
-        '<div class="day-heading">' + escapeHTML(shortDate(d)) +
-        (isToday ? '<span class="today-tag">Today</span>' : "") + "</div>";
-      if (!entry || dayIsEmpty(entry)) {
-        html += '<p class="muted">No menu posted.</p>';
+      if (isCurrentWeek && d < anchor) {
+        earlier += dayCardHTML(d);
       } else {
-        html += '<div class="subheading">Breakfast</div>' + mealList(entry.breakfast);
-        html += '<div class="subheading">Lunch — Entrée</div>' + mealList(entry.lunch_entree);
-        html += '<div class="subheading">Lunch — Express</div>' + mealList(entry.lunch_express);
+        html += dayCardHTML(d);
       }
-      html += "</div>";
+    }
+    if (earlier) {
+      html += '<details class="earlier"><summary>Earlier this week</summary>' +
+        earlier + "</details>";
     }
     contentEl.innerHTML = html;
   }
@@ -166,18 +275,19 @@
 
   function setView(v) {
     view = v;
-    try { localStorage.setItem("msp-view", v); } catch (e) {}
+    // Week view always opens at today.
+    if (v === "week") selected = startOfDay(new Date());
     render();
   }
 
   tabDay.addEventListener("click", function () { setView("day"); });
   tabWeek.addEventListener("click", function () { setView("week"); });
   document.getElementById("prev-day").addEventListener("click", function () {
-    selected = addDays(selected, -1);
+    selected = stepDay(selected, -1);
     render();
   });
   document.getElementById("next-day").addEventListener("click", function () {
-    selected = addDays(selected, 1);
+    selected = stepDay(selected, 1);
     render();
   });
   document.getElementById("today-btn").addEventListener("click", function () {
@@ -216,7 +326,7 @@
     })
     .catch(function () {
       contentEl.innerHTML =
-        '<div class="card"><div class="card-title">🍽️ Meals</div>' +
+        '<div class="card"><div class="card-title">\uD83C\uDF7D\uFE0F Meals</div>' +
         '<p class="muted">Menu data couldn&rsquo;t be loaded. Check your connection and try again.</p></div>';
     });
 

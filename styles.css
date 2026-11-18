@@ -155,6 +155,42 @@ h1 {
 
 .subheading:first-of-type { margin-top: 4px; }
 
+/* Collapsed "Condiments & milk" inside a meal card */
+.extras {
+  margin-top: 16px;
+  padding-top: 4px;
+  border-top: 1px solid var(--seg-bg);
+}
+
+.extras summary {
+  cursor: pointer;
+  padding: 10px 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+}
+
+/* Collapsed "Earlier this week" in week view */
+.earlier { margin-bottom: 14px; }
+
+.earlier > summary {
+  cursor: pointer;
+  list-style: none;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 19px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.earlier > summary::-webkit-details-marker { display: none; }
+
+.earlier .card { margin-top: 14px; }
+.earlier .card:last-child { margin-bottom: 0; }
+
 ul {
   padding-left: 23px;
   margin: 7px 0 3px;
