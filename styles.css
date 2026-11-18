@@ -40,52 +40,54 @@ main { max-width: 640px; margin: 0 auto; }
 
 .header-titles { min-width: 0; }
 
-/* "Balance" link to LINQ Connect, top-right of the header */
-.balance-link {
-  flex: 0 0 auto;
-  margin-top: 5px;
-  border-radius: 100px;
-  background: var(--card);
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 700;
-  padding: 8px 14px;
-  text-decoration: none;
-  box-shadow: var(--shadow);
-  white-space: nowrap;
-}
-
-/* Right-hand header column: "Check balance" on top, the round search
-   button directly under it. */
+/* Right-hand header column: "Check balance" on top, the Search pill
+   directly under it. The column is as wide as its widest child (the
+   "Check balance" label) and both pills stretch to fill it, so the two
+   pills are identical in size. */
 .header-actions {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  width: max-content;
   gap: 10px;
+  margin-top: 5px;
 }
 
-/* Circular magnifier button under the Balance button. Active while
-   the search view is open. */
-.search-btn {
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 50%;
-  background: var(--card);
-  color: var(--text);
-  box-shadow: var(--shadow);
-  cursor: pointer;
+/* Shared pill for both top-right header controls: same height, width,
+   border-radius, background, and font. */
+.header-pill {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  gap: 7px;
+  width: 100%;
+  border: 0;
+  border-radius: 100px;
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 11px 16px;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+  cursor: pointer;
 }
 
+/* "Check balance" link to LINQ Connect, top-right of the header */
+.balance-link {
+  text-decoration: none;
+}
+
+/* Search pill under the "Check balance" pill. Active while the search
+   view is open. */
 .search-btn svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   display: block;
+  flex: 0 0 auto;
 }
 
 .search-btn:active { opacity: 0.7; }

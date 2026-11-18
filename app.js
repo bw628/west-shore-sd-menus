@@ -715,7 +715,7 @@
 
   // Each school has its own menu file under data/.
   function loadSchool(slug) {
-    return fetch("data/" + slug + ".json?v=8", { cache: "no-store" })
+    return fetch("data/" + slug + ".json?v=9", { cache: "no-store" })
       .then(function (resp) {
         if (!resp.ok) throw new Error("HTTP " + resp.status);
         return resp.json();
