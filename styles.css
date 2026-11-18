@@ -907,3 +907,45 @@ body:has(.plate-dialog[open]) { overflow: hidden; }
 .plate-label thead th { color: var(--muted); font-size: 0.75rem; }
 .plate-label .nutrient-indent th { padding-left: 10px; font-weight: 400; }
 .plate-footnote { margin: 8px 0 0; color: var(--muted); font-size: 0.75rem; }
+
+.plate-station-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--seg-bg);
+  color: var(--text);
+  font-weight: 750;
+  text-align: left;
+  cursor: pointer;
+}
+
+.plate-station-toggle[aria-pressed="true"],
+.plate-station-toggle[aria-pressed="mixed"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.plate-station-toggle[aria-pressed="true"] .plate-check,
+.plate-station-toggle[aria-pressed="mixed"] .plate-check { color: var(--accent); }
+.plate-station-toggle[aria-pressed="true"] .plate-check::before { content: "✓"; }
+.plate-station-toggle[aria-pressed="mixed"] .plate-check::before { content: "−"; }
+
+.plate-item-name {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.plate-serving {
+  max-width: 40%;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}

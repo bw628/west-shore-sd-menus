@@ -390,16 +390,21 @@
       var station = section[1];
       var items = stationItems(meal, station);
       if (!items.length) return "";
-      return '<section class="plate-station"><h3>' + escapeHTML(section[0]) + '</h3>' +
+      return '<section class="plate-station"><h3><button type="button" class="plate-station-toggle" ' +
+        'data-plate-station aria-pressed="false" aria-label="' + escapeHTML(section[0]) +
+        ', toggle section"><span>' + escapeHTML(section[0]) +
+        '</span><span class="plate-check" aria-hidden="true"></span></button></h3>' +
         items.map(function (name) {
           var stationNutrition = nutrition[station] || {};
           var values = Object.prototype.hasOwnProperty.call(stationNutrition, name)
             ? stationNutrition[name] : null;
           var available = NUTRITION_ROWS.some(function (row) { return hasNutrient(values, row[0]); });
           var index = plateItems.push(available ? values : null) - 1;
+          var serving = values && values.serving_size
+            ? '<span class="plate-serving">' + escapeHTML(values.serving_size) + '</span>' : "";
           return '<div class="plate-item"><button type="button" data-plate-item="' + index +
-            '" aria-pressed="false"><span>' + escapeHTML(name) +
-            '</span><span class="plate-check" aria-hidden="true"></span></button>' +
+            '" aria-pressed="false"><span class="plate-item-name">' + escapeHTML(name) +
+            '</span>' + serving + '<span class="plate-check" aria-hidden="true"></span></button>' +
             '<p class="plate-unavailable" role="status"></p></div>';
         }).join("") + '</section>';
     }).join("");
@@ -413,17 +418,41 @@
     plateDialog.querySelector(".plate-scroll").scrollTop = 0;
   }
 
-  plateFoods.addEventListener("click", function (e) {
-    var button = e.target.closest("[data-plate-item]");
-    if (!button) return;
+  function setPlateItem(button, include) {
     var index = Number(button.dataset.plateItem);
     if (!plateItems[index]) {
-      button.parentElement.querySelector(".plate-unavailable").textContent = "Nutrition unavailable";
+      if (include) {
+        button.parentElement.querySelector(".plate-unavailable").textContent = "Nutrition unavailable";
+      }
       return;
     }
-    if (plateSelection.has(index)) plateSelection.delete(index);
-    else plateSelection.add(index);
-    button.setAttribute("aria-pressed", String(plateSelection.has(index)));
+    if (include) plateSelection.add(index);
+    else plateSelection.delete(index);
+    button.setAttribute("aria-pressed", String(include));
+  }
+
+  plateFoods.addEventListener("click", function (e) {
+    var button = e.target.closest("[data-plate-item], [data-plate-station]");
+    if (!button) return;
+    var station = button.closest(".plate-station");
+    var toggle = station.querySelector("[data-plate-station]");
+    var items = Array.from(station.querySelectorAll("[data-plate-item]"));
+    var available = items.filter(function (item) {
+      return plateItems[Number(item.dataset.plateItem)];
+    });
+
+    if (button === toggle) {
+      var include = toggle.getAttribute("aria-pressed") !== "true";
+      items.forEach(function (item) { setPlateItem(item, include); });
+    } else {
+      setPlateItem(button, button.getAttribute("aria-pressed") !== "true");
+    }
+
+    var selectedCount = available.filter(function (item) {
+      return plateSelection.has(Number(item.dataset.plateItem));
+    }).length;
+    toggle.setAttribute("aria-pressed", selectedCount === 0 ? "false" :
+      selectedCount === available.length ? "true" : "mixed");
     renderPlateLabel();
   });
 

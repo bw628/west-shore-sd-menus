@@ -136,6 +136,12 @@ def extract_stations(day):
             continue
         names.append(name)
         values = extract_nutrition(food, item)
+        amount, unit = item.get("serving_size_amount"), item.get("serving_size_unit")
+        if amount is None or not unit:
+            serving = food.get("serving_size_info") or {}
+            amount, unit = serving.get("serving_size_amount"), serving.get("serving_size_unit")
+        if amount is not None and str(amount).strip() and unit:
+            values["serving_size"] = f"{amount} {unit}"
         if values:
             nutrition.setdefault(current, {})[name] = values
     return out, nutrition
