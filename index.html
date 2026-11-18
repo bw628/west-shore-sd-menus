@@ -13,13 +13,16 @@
 <meta name="apple-mobile-web-app-title" content="Lunch Menu">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
   <main>
     <header class="header">
-      <h1>School Lunch Menu</h1>
-      <p class="subtitle">Highland Elementary</p>
+      <div class="header-titles">
+        <h1>School Lunch Menu</h1>
+        <p class="subtitle">Highland Elementary</p>
+      </div>
+      <a class="balance-link" href="https://linqconnect.com" target="_blank" rel="noopener">Balance</a>
     </header>
 
     <div class="segmented" role="tablist" aria-label="Menu view">
@@ -58,6 +61,6 @@
     <footer class="footer" id="footer"></footer>
   </main>
   <!-- Bump the ?v=N on app.js / styles.css with every deploy so cached home-screen installs pick up the new files. -->
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

@@ -28,7 +28,34 @@ body {
 
 main { max-width: 640px; margin: 0 auto; }
 
-.header { padding: 8px 4px 16px; }
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 4px 16px;
+}
+
+.header-titles { min-width: 0; }
+
+/* "Balance" link to LINQ Connect, top-right of the header */
+.balance-link {
+  flex: 0 0 auto;
+  margin-top: 5px;
+  border-radius: 100px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 14px;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 28px; }
+}
 
 h1 {
   margin: 0;
