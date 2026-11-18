@@ -2,9 +2,13 @@
 """Fetch the Highland Elementary cafeteria menu from Nutrislice and write
 data.json (current week + next week).
 
-Breakfast: Entree station only.
-Lunch: Entree + Express stations.
-Item names are deduped and capped at 10 per station.
+Captures EVERY station for both meals:
+  Breakfast: Entree, Daily Serve Entree, Fruit, Condiments, Milk.
+  Lunch: Entree, Daily Serve Entree, Express, Vegetable, Fruit,
+  Condiments, Milk.
+Item names are deduped and capped at 10 per station. Station labels are
+normalized (trimmed + lowercased) because the API sometimes returns
+e.g. "Condiments " with a trailing space.
 """
 import json
 import urllib.request
@@ -14,6 +18,29 @@ SCHOOL_SLUG = "highland-elementary"
 API_BASE = "https://wssdk12pa.api.nutrislice.com"
 MAX_ITEMS = 10
 OUT_PATH = "data.json"
+
+# Normalized station label -> schema key
+STATION_KEYS = {
+    "entree": "entree",
+    "entrée": "entree",
+    "daily serve entree": "daily_serve",
+    "express": "express",
+    "vegetable": "vegetable",
+    "fruit": "fruit",
+    "condiments": "condiments",
+    "milk": "milk",
+}
+
+BREAKFAST_SCHEMA = ["entree", "daily_serve", "fruit", "condiments", "milk"]
+LUNCH_SCHEMA = [
+    "entree",
+    "daily_serve",
+    "express",
+    "vegetable",
+    "fruit",
+    "condiments",
+    "milk",
+]
 
 
 def fetch_week(menu_type, d):
@@ -29,30 +56,30 @@ def fetch_week(menu_type, d):
         return json.load(resp)
 
 
-def extract(day, station):
-    """Pull item names from one station of one Nutrislice day object."""
-    out = []
+def extract_stations(day):
+    """Pull item names for every station of one Nutrislice day object.
+
+    Returns {station_key: [deduped names, capped at MAX_ITEMS]}.
+    """
+    out = {}
     current = None
     for item in (day or {}).get("menu_items", []) or []:
         if item.get("is_station_header"):
             label = (item.get("text") or "").strip().lower()
-            if label in ("entree", "entrée"):
-                current = "Entree"
-            elif label == "express":
-                current = "Express"
-            else:
-                current = None
+            current = STATION_KEYS.get(label)
             continue
         name = (item.get("food") or {}).get("name")
-        if name and current == station:
-            out.append(name)
-    seen = set()
-    deduped = []
-    for name in out:
-        if name not in seen:
-            seen.add(name)
-            deduped.append(name)
-    return deduped[:MAX_ITEMS]
+        if name and current:
+            out.setdefault(current, []).append(name)
+    for key, names in out.items():
+        seen = set()
+        deduped = []
+        for name in names:
+            if name not in seen:
+                seen.add(name)
+                deduped.append(name)
+        out[key] = deduped[:MAX_ITEMS]
+    return out
 
 
 def sunday_of(d):
@@ -74,13 +101,19 @@ def main():
                     continue
                 entry = days.setdefault(
                     iso,
-                    {"breakfast": [], "lunch_entree": [], "lunch_express": []},
+                    {
+                        "breakfast": {k: [] for k in BREAKFAST_SCHEMA},
+                        "lunch": {k: [] for k in LUNCH_SCHEMA},
+                    },
                 )
-                if menu_type == "breakfast":
-                    entry["breakfast"] = extract(day, "Entree")
-                else:
-                    entry["lunch_entree"] = extract(day, "Entree")
-                    entry["lunch_express"] = extract(day, "Express")
+                stations = extract_stations(day)
+                schema = (
+                    BREAKFAST_SCHEMA if menu_type == "breakfast" else LUNCH_SCHEMA
+                )
+                target = entry["breakfast"] if menu_type == "breakfast" else entry["lunch"]
+                for key in schema:
+                    if stations.get(key):
+                        target[key] = stations[key]
     data = {
         "generated_at": datetime.now(timezone.utc)
         .isoformat()
