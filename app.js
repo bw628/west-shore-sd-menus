@@ -710,12 +710,12 @@
       schoolBtnEl.innerHTML = escapeHTML(name) +
         ' <span class="chev">\u2304</span>';
     }
-    document.title = "School Lunch Menu \u2014 " + name;
+    document.title = "West Shore Menu \u2014 " + name;
   }
 
   // Each school has its own menu file under data/.
   function loadSchool(slug) {
-    return fetch("data/" + slug + ".json?v=9", { cache: "no-store" })
+    return fetch("data/" + slug + ".json?v=10", { cache: "no-store" })
       .then(function (resp) {
         if (!resp.ok) throw new Error("HTTP " + resp.status);
         return resp.json();

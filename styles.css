@@ -166,6 +166,12 @@ h1 {
   margin-bottom: 14px;
 }
 
+/* The [hidden] rule must stay after the display rule above: without
+   it, `display: flex` overrides the hidden attribute, so the week
+   nav shows as a bare pair of arrows with no dates in Day/Search
+   view (and the day nav shows in Week/Search view). */
+.daynav[hidden] { display: none; }
+
 .arrow {
   flex: 0 0 auto;
   width: 44px;
