@@ -522,7 +522,7 @@
   }
 
   var printDialog = document.getElementById("print-dialog");
-  var printFrame = document.getElementById("print-frame");
+  var printPreview = document.getElementById("print-preview");
   var printOpen = document.getElementById("print-open");
   var printSave = document.getElementById("print-save");
   var printShare = document.getElementById("print-share");
@@ -533,8 +533,8 @@
 
   function resetPrintPreview() {
     printRequest++;
-    printFrame.hidden = true;
-    printFrame.removeAttribute("src");
+    printPreview.hidden = true;
+    printPreview.replaceChildren();
     printOpen.hidden = true;
     printOpen.removeAttribute("href");
     printSave.hidden = true;
@@ -585,16 +585,19 @@
     var secondary = theme.getPropertyValue("--school-secondary").trim() || "#519e88";
 
     try {
-      var { createWeeklyMenuPdf } = await import("./weekly-print.mjs?v=1");
-      var bytes = await createWeeklyMenuPdf({school: name, weekText, days, primary, secondary});
+      var { createWeeklyMenuPdf } = await import("./weekly-print.mjs?v=2");
+      var preview = document.createElement("canvas");
+      preview.setAttribute("role", "img");
+      preview.setAttribute("aria-label", "Preview of " + name + " weekly menu. Open PDF for the full document.");
+      var bytes = await createWeeklyMenuPdf({school: name, weekText, days, primary, secondary, preview});
       if (request !== printRequest || !printDialog.open) return;
       printFile = new File([bytes], filename, {type: "application/pdf"});
       printUrl = URL.createObjectURL(printFile);
-      printFrame.src = printUrl;
+      printPreview.replaceChildren(preview);
       printOpen.href = printUrl;
       printSave.href = printUrl;
       printSave.download = filename;
-      printFrame.hidden = false;
+      printPreview.hidden = false;
       printOpen.hidden = false;
       printSave.hidden = false;
       if (navigator.canShare && navigator.canShare({files: [printFile]})) printShare.hidden = false;

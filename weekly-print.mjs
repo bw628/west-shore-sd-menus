@@ -123,7 +123,7 @@ function mealLayout(meal, fonts, size, maxColumnLines = Infinity) {
     height: 24 + 18 + columnHeight + notesHeight };
 }
 
-export async function createWeeklyMenuPdf({school, weekText, days, primary, secondary}) {
+export async function createWeeklyMenuPdf({school, weekText, days, primary, secondary, preview}) {
   const pdf = await PDFDocument.create();
   pdf.setTitle(school + " - " + weekText);
   const fonts = {
@@ -131,7 +131,13 @@ export async function createWeeklyMenuPdf({school, weekText, days, primary, seco
     bold: await pdf.embedFont(StandardFonts.HelveticaBold)
   };
   const page = pdf.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
-  page.drawRectangle({x: 0, y: 0, width: PAGE_WIDTH, height: PAGE_HEIGHT, color: rgb(1, 1, 1)});
+  const context = preview?.getContext("2d");
+  if (context) {
+    preview.width = PAGE_WIDTH * 2;
+    preview.height = PAGE_HEIGHT * 2;
+    context.scale(2, 2);
+  }
+  rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, rgb(1, 1, 1));
   const ink = color("#201b2c");
   const muted = color("#514b60");
   const line = color("#ccc7d4");
@@ -166,8 +172,25 @@ export async function createWeeklyMenuPdf({school, weekText, days, primary, seco
     }
   }
 
+  function cssColor(value) {
+    return "rgb(" + [value.red, value.green, value.blue].map((channel) => Math.round(channel * 255)).join(",") + ")";
+  }
+
+  function rect(x, y, width, height, colorValue) {
+    page.drawRectangle({x, y, width, height, color: colorValue});
+    if (context) {
+      context.fillStyle = cssColor(colorValue);
+      context.fillRect(x, PAGE_HEIGHT - y - height, width, height);
+    }
+  }
+
   function text(value, x, y, fontSize, colorValue = ink, bold = false) {
     page.drawText(value, {x, y, size: fontSize, color: colorValue, font: bold ? fonts.bold : fonts.regular});
+    if (context) {
+      context.font = (bold ? "bold " : "") + fontSize + "px Helvetica, Arial, sans-serif";
+      context.fillStyle = cssColor(colorValue);
+      context.fillText(value, x, PAGE_HEIGHT - y);
+    }
   }
 
   function fitHeader(value, x, y, fontSize, colorValue, bold) {
@@ -178,13 +201,21 @@ export async function createWeeklyMenuPdf({school, weekText, days, primary, seco
 
   function rule(x1, y1, x2, y2, colorValue = line, thickness = 0.55) {
     page.drawLine({start: {x: x1, y: y1}, end: {x: x2, y: y2}, color: colorValue, thickness});
+    if (context) {
+      context.strokeStyle = cssColor(colorValue);
+      context.lineWidth = thickness;
+      context.beginPath();
+      context.moveTo(x1, PAGE_HEIGHT - y1);
+      context.lineTo(x2, PAGE_HEIGHT - y2);
+      context.stroke();
+    }
   }
 
   function drawMeal(layout, top, extraSpace) {
     const bottom = top - layout.height - extraSpace;
     const noteTop = bottom + layout.notesHeight;
-    page.drawRectangle({x: MARGIN, y: top - 24, width: WIDTH, height: 24, color: wash});
-    page.drawRectangle({x: MARGIN, y: top - 24, width: 3, height: 24, color: stripe});
+    rect(MARGIN, top - 24, WIDTH, 24, wash);
+    rect(MARGIN, top - 24, 3, 24, stripe);
     text(layout.title, MARGIN + 11, top - 16.5, 12, accent, true);
     layout.columns.forEach((column, index) => {
       const x = MARGIN + index * COLUMN;
