@@ -215,13 +215,13 @@ h1 {
 .meal-station.station-vegetable, .station-vegetable + .station-fruit { grid-column: span 1; }
 .station-vegetable + .station-fruit { border-left: 1px solid var(--line); }
 
-.meal-featured > .meal-title,
-.meal-featured .station-entree {
+.meal-card > .meal-title,
+.meal-card .station-entree {
   background: var(--feature-bg);
   color: var(--feature-text);
 }
 
-.meal-featured .station-entree { padding-top: 6px; padding-bottom: 16px; }
+.meal-card .station-entree { padding-top: 6px; padding-bottom: 16px; }
 
 .subheading {
   margin: 0 0 5px;
@@ -233,7 +233,7 @@ h1 {
   text-transform: uppercase;
 }
 
-.meal-featured .station-entree .subheading { color: var(--accent); }
+.meal-card .station-entree .subheading { color: var(--accent); }
 
 .meal-list {
   margin: 0;
@@ -245,7 +245,7 @@ h1 {
 
 .meal-list li + li { margin-top: 3px; }
 
-.meal-featured .station-entree li:first-child {
+.meal-card .station-entree li:first-child {
   margin-bottom: 5px;
   font-size: clamp(22px, 6.3vw, 29px);
   line-height: 1.1;
@@ -253,9 +253,9 @@ h1 {
   letter-spacing: -0.035em;
 }
 
-.meal-featured .station-entree li + li { display: inline; }
-.meal-featured .station-entree li + li::before { content: ' · '; }
-.meal-featured .station-entree li:nth-child(2)::before { content: none; }
+.meal-card .station-entree li + li { display: inline; }
+.meal-card .station-entree li + li::before { content: ' · '; }
+.meal-card .station-entree li:nth-child(2)::before { content: none; }
 
 .muted {
   margin: 8px 0 0;
@@ -743,12 +743,12 @@ span.cal-day.blank { background: transparent; }
     --school-secondary: #eeb72a;
   }
 
-  .meal-featured > .meal-title,
-  .meal-featured .station-entree {
+  .meal-card > .meal-title,
+  .meal-card .station-entree {
     box-shadow: inset 3px 0 var(--school-secondary);
   }
 
-  .meal-featured .station-entree li:first-child {
+  .meal-card .station-entree li:first-child {
     color: var(--accent);
   }
 }

@@ -257,9 +257,9 @@
       inner + "</details>";
   }
 
-  function mealCard(meal, title, sections, featured) {
-    var html = '<section class="card meal-card' + (featured ? ' meal-featured' : '') +
-      '"><h2 class="card-title meal-title">' + title + '</h2><div class="meal-stations">';
+  function mealCard(meal, title, sections) {
+    var html = '<section class="card meal-card"><h2 class="card-title meal-title">' +
+      title + '</h2><div class="meal-stations">';
     sections.forEach(function (section) {
       html += '<div class="meal-station station-' + section[1] + '">' +
         '<h3 class="subheading">' + escapeHTML(section[0]) + '</h3>' +
@@ -270,8 +270,8 @@
 
   // Keep the saved meal-order preference in both views.
   function mealCards(entry) {
-    var breakfast = mealCard(entry.breakfast, "Breakfast", BREAKFAST_MAINS, !lunchFirst);
-    var lunch = mealCard(entry.lunch, "Lunch", LUNCH_MAINS, lunchFirst);
+    var breakfast = mealCard(entry.breakfast, "Breakfast", BREAKFAST_MAINS);
+    var lunch = mealCard(entry.lunch, "Lunch", LUNCH_MAINS);
     return lunchFirst ? lunch + breakfast : breakfast + lunch;
   }
 
