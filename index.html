@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Lunch Menu">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <main>
@@ -28,6 +28,7 @@
     <div class="segmented" role="tablist" aria-label="Menu view">
       <button id="tab-day" class="seg active" role="tab" aria-selected="true">Day</button>
       <button id="tab-week" class="seg" role="tab" aria-selected="false">Week</button>
+      <button id="tab-search" class="seg" role="tab" aria-selected="false">Search</button>
     </div>
 
     <nav class="daynav" id="daynav" aria-label="Choose a day">
@@ -42,6 +43,11 @@
       <div class="date-label" id="week-label">&nbsp;</div>
       <button id="next-week" class="arrow" aria-label="Next week">&#8250;</button>
     </nav>
+
+    <div class="searchbox" id="searchnav" hidden>
+      <input type="search" id="search-input" placeholder="Search a food&hellip;" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search menu items">
+      <div id="search-suggest" class="suggest" hidden></div>
+    </div>
 
     <div id="content" aria-live="polite">
       <div class="card"><p class="muted">Loading menu&hellip;</p></div>
@@ -61,6 +67,6 @@
     <footer class="footer" id="footer"></footer>
   </main>
   <!-- Bump the ?v=N on app.js / styles.css with every deploy so cached home-screen installs pick up the new files. -->
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

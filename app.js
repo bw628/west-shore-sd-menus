@@ -62,6 +62,10 @@
   var weeknavEl = document.getElementById("weeknav");
   var tabDay = document.getElementById("tab-day");
   var tabWeek = document.getElementById("tab-week");
+  var tabSearch = document.getElementById("tab-search");
+  var searchnavEl = document.getElementById("searchnav");
+  var searchInputEl = document.getElementById("search-input");
+  var searchSuggestEl = document.getElementById("search-suggest");
   var footerEl = document.getElementById("footer");
 
   function pad2(n) { return String(n).padStart(2, "0"); }
@@ -301,12 +305,17 @@
   function render() {
     tabDay.classList.toggle("active", view === "day");
     tabWeek.classList.toggle("active", view === "week");
+    tabSearch.classList.toggle("active", view === "search");
     tabDay.setAttribute("aria-selected", view === "day" ? "true" : "false");
     tabWeek.setAttribute("aria-selected", view === "week" ? "true" : "false");
+    tabSearch.setAttribute("aria-selected", view === "search" ? "true" : "false");
     daynavEl.hidden = view !== "day";
     weeknavEl.hidden = view !== "week";
+    searchnavEl.hidden = view !== "search";
+    if (view !== "search") hideSuggest();
     if (view === "day") renderDay();
-    else renderWeek();
+    else if (view === "week") renderWeek();
+    else renderSearch();
   }
 
   function setView(v) {
@@ -318,6 +327,7 @@
 
   tabDay.addEventListener("click", function () { setView("day"); });
   tabWeek.addEventListener("click", function () { setView("week"); });
+  tabSearch.addEventListener("click", function () { setView("search"); });
   document.getElementById("prev-day").addEventListener("click", function () {
     selected = stepDay(selected, -1);
     render();
@@ -337,6 +347,239 @@
   document.getElementById("next-week").addEventListener("click", function () {
     selected = addDays(selected, 7);
     render();
+  });
+
+  // --- Food search ---
+  // The autocomplete list is every distinct item name in the loaded
+  // data.json, across every day, meal, and station. Favorites are not
+  // involved: search is per-device and nothing leaves the phone.
+  var allItems = [];
+  var searchItem = null; // currently selected item name, or null
+
+  function buildItemList() {
+    var seen = {};
+    var list = [];
+    if (!data || !data.days) { allItems = []; return; }
+    Object.keys(data.days).forEach(function (dISO) {
+      var entry = normalizeEntry(data.days[dISO]);
+      if (!entry) return;
+      ["breakfast", "lunch"].forEach(function (mealKey) {
+        var meal = entry[mealKey] || {};
+        Object.keys(meal).forEach(function (station) {
+          (meal[station] || []).forEach(function (name) {
+            if (name && !seen[name]) { seen[name] = true; list.push(name); }
+          });
+        });
+      });
+    });
+    list.sort(function (a, b) {
+      return a.toLowerCase().localeCompare(b.toLowerCase());
+    });
+    allItems = list;
+  }
+
+  // Case-insensitive substring match, alphabetical (allItems is sorted).
+  function matchItems(q) {
+    var needle = String(q || "").trim().toLowerCase();
+    if (!needle) return [];
+    return allItems.filter(function (name) {
+      return name.toLowerCase().indexOf(needle) !== -1;
+    });
+  }
+
+  function hideSuggest() {
+    if (searchSuggestEl) searchSuggestEl.hidden = true;
+  }
+
+  function showSuggest(matches) {
+    if (!searchSuggestEl) return;
+    if (!matches.length) { hideSuggest(); return; }
+    searchSuggestEl.innerHTML = matches.slice(0, 8).map(function (name) {
+      return '<button type="button" class="suggest-item" data-item="' +
+        escapeHTML(name) + '">' + escapeHTML(name) + "</button>";
+    }).join("");
+    searchSuggestEl.hidden = false;
+  }
+
+  function selectSearchItem(name) {
+    searchItem = name;
+    if (searchInputEl) searchInputEl.value = name;
+    hideSuggest();
+    renderSearch();
+  }
+
+  // Future dates (today onward) on which `item` appears, split by meal.
+  // An item can appear in both meals on the same date; it is listed
+  // under both.
+  function itemDates(item) {
+    var out = { breakfast: [], lunch: [] };
+    if (!data || !data.days || !item) return out;
+    var todayISO = iso(startOfDay(new Date()));
+    Object.keys(data.days).sort().forEach(function (dISO) {
+      if (dISO < todayISO) return;
+      var entry = normalizeEntry(data.days[dISO]);
+      if (!entry) return;
+      ["breakfast", "lunch"].forEach(function (mealKey) {
+        var meal = entry[mealKey] || {};
+        var found = Object.keys(meal).some(function (station) {
+          return (meal[station] || []).indexOf(item) !== -1;
+        });
+        if (found) out[mealKey].push(parseISO(dISO));
+      });
+    });
+    return out;
+  }
+
+  function lastLoadedISO() {
+    if (!data || !data.days) return null;
+    var keys = Object.keys(data.days).sort();
+    return keys.length ? keys[keys.length - 1] : null;
+  }
+
+  // Walk up from a clicked node looking for a data-* attribute.
+  function closestData(el, key) {
+    while (el) {
+      if (el.dataset && el.dataset[key]) return el.dataset[key];
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  // Month grid for the current month. Today gets one treatment (accent
+  // outline), days featuring the item another (filled background); a day
+  // that is both gets both. Only loaded weekdays are tappable — tapping
+  // one jumps to that day in Day view.
+  function calendarHTML(dates) {
+    var today = startOfDay(new Date());
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var first = new Date(year, month, 1);
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var todayISO = iso(today);
+    var itemSet = {};
+    dates.breakfast.concat(dates.lunch).forEach(function (d) {
+      itemSet[iso(d)] = true;
+    });
+    var loadedSet = {};
+    if (data && data.days) {
+      Object.keys(data.days).forEach(function (k) { loadedSet[k] = true; });
+    }
+    var heads = ["S", "M", "T", "W", "T", "F", "S"].map(function (h) {
+      return '<span class="cal-head">' + h + "</span>";
+    }).join("");
+    var cells = "";
+    var i, day;
+    for (i = 0; i < first.getDay(); i++) {
+      cells += '<span class="cal-day blank"></span>';
+    }
+    for (day = 1; day <= daysInMonth; day++) {
+      var d = new Date(year, month, day);
+      var dISO = iso(d);
+      var cls = "cal-day";
+      if (dISO === todayISO) cls += " today";
+      if (itemSet[dISO]) cls += " item";
+      if (d < today) cls += " past";
+      if (loadedSet[dISO] && !isWeekend(d)) {
+        cells += '<button type="button" class="' + cls +
+          '" data-goto="' + dISO + '">' + day + "</button>";
+      } else {
+        cells += '<span class="' + cls + '">' + day + "</span>";
+      }
+    }
+    return '<div class="card"><div class="card-title">' +
+      escapeHTML(MONTHS[month] + " " + year) + "</div>" +
+      '<div class="cal">' + heads + cells + "</div>" +
+      '<p class="cal-legend"><span class="cal-key today"></span> Today' +
+      " &nbsp; <span class=\"cal-key item\"></span> On the menu</p></div>";
+  }
+
+  function dateListHTML(dates, mealLabel) {
+    if (!dates.length) {
+      return '<p class="muted">Not coming up for ' +
+        escapeHTML(mealLabel.toLowerCase()) + ".</p>";
+    }
+    return '<ul class="result-list">' + dates.map(function (d) {
+      return '<li><button type="button" class="result-date" data-goto="' +
+        iso(d) + '">' + escapeHTML(shortDate(d)) +
+        ' <span class="result-chev">\u203A</span></button></li>';
+    }).join("") + "</ul>";
+  }
+
+  function renderSearch() {
+    if (!data) {
+      contentEl.innerHTML =
+        '<div class="card"><p class="muted">Loading menu&hellip;</p></div>';
+      return;
+    }
+    if (!searchItem) {
+      contentEl.innerHTML =
+        '<div class="card"><div class="card-title">\uD83D\uDD0D Food search</div>' +
+        "<p class=\"muted\">Type a food above to see the days it&rsquo;s on " +
+        "the menu &mdash; breakfast and lunch separately.</p></div>";
+      return;
+    }
+    var dates = itemDates(searchItem);
+    var last = lastLoadedISO();
+    var html = calendarHTML(dates);
+    html += '<div class="card"><div class="card-title">' +
+      escapeHTML(searchItem) + "</div>";
+    if (!dates.breakfast.length && !dates.lunch.length) {
+      html += '<p class="muted">Not on the menu in the loaded menus.</p>';
+    } else {
+      html += '<div class="subheading">Breakfast</div>' +
+        dateListHTML(dates.breakfast, "Breakfast");
+      html += '<div class="subheading">Lunch</div>' +
+        dateListHTML(dates.lunch, "Lunch");
+    }
+    if (last) {
+      html += '<p class="muted">Menus loaded through ' +
+        escapeHTML(longDate(parseISO(last))) + ".</p>";
+    }
+    html += "</div>";
+    contentEl.innerHTML = html;
+  }
+
+  if (searchInputEl) {
+    searchInputEl.addEventListener("input", function () {
+      var q = searchInputEl.value;
+      if (!String(q).trim()) {
+        searchItem = null;
+        hideSuggest();
+        renderSearch();
+        return;
+      }
+      showSuggest(matchItems(q));
+    });
+    searchInputEl.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        var matches = matchItems(searchInputEl.value);
+        if (matches.length) selectSearchItem(matches[0]);
+      } else if (e.key === "Escape") {
+        hideSuggest();
+      }
+    });
+    // Hide suggestions shortly after blur so a tap on a suggestion
+    // still lands before the list disappears.
+    searchInputEl.addEventListener("blur", function () {
+      setTimeout(hideSuggest, 150);
+    });
+  }
+
+  if (searchSuggestEl) {
+    searchSuggestEl.addEventListener("click", function (e) {
+      var name = closestData(e.target, "item");
+      if (name) selectSearchItem(name);
+    });
+  }
+
+  // Tapping a date in the search results or calendar jumps to that day
+  // in Day view.
+  contentEl.addEventListener("click", function (e) {
+    var dISO = closestData(e.target, "goto");
+    if (dISO) {
+      selected = parseISO(dISO);
+      setView("day");
+    }
   });
 
   // Settings toggles at the bottom of the page. Both persist in
@@ -367,13 +610,19 @@
     return MONTHS_SHORT[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
   }
 
-  fetch("data.json?v=4", { cache: "no-store" })
+  fetch("data.json?v=5", { cache: "no-store" })
     .then(function (resp) {
       if (!resp.ok) throw new Error("HTTP " + resp.status);
       return resp.json();
     })
     .then(function (json) {
       data = json;
+      buildItemList();
+      // If the user already typed before the data arrived, offer
+      // suggestions for what is in the box now.
+      if (searchInputEl && searchInputEl.value) {
+        showSuggest(matchItems(searchInputEl.value));
+      }
       var updated = formatUpdated(data.generated_at);
       footerEl.innerHTML = updated
         ? "Menu updated " + escapeHTML(updated) +
