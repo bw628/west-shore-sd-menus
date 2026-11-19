@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T18:41:07.105880Z",
+  "generated_at": "2026-11-19T18:54:07.694834Z",
   "school": "Fairview Intermediate School",
   "slug": "fairview-intermediate",
   "weeks": [
@@ -3719,8 +3719,8 @@
         "condiments": [],
         "milk": [
           "1% Chocolate Milk",
-          "1% Strawberry Milk",
           "1% Milk",
+          "1% Strawberry Milk",
           "Skim Chocolate Lactose Free Milk",
           "1% Lactose Free Milk"
         ]
@@ -4305,6 +4305,23 @@
               "mg_potassium": 380.0,
               "serving_size": "1 carton"
             },
+            "1% Milk": {
+              "calories": 100.0,
+              "g_fat": 2.5,
+              "g_saturated_fat": 1.5,
+              "mg_cholesterol": 12.0,
+              "mg_sodium": 105.0,
+              "g_carbs": 12.0,
+              "g_fiber": 0.0,
+              "g_sugar": 13.0,
+              "g_protein": 8.0,
+              "mcg_vitamin_d": 2.9,
+              "mg_calcium": 310.0,
+              "mg_iron": 0.1,
+              "mg_potassium": 370.0,
+              "mg_vitamin_c": 0.0,
+              "serving_size": "1 carton"
+            },
             "1% Strawberry Milk": {
               "calories": 150.0,
               "g_fat": 2.0,
@@ -4321,23 +4338,6 @@
               "mg_calcium": 290.0,
               "mg_iron": 0.0,
               "mg_potassium": 380.0,
-              "serving_size": "1 carton"
-            },
-            "1% Milk": {
-              "calories": 100.0,
-              "g_fat": 2.5,
-              "g_saturated_fat": 1.5,
-              "mg_cholesterol": 12.0,
-              "mg_sodium": 105.0,
-              "g_carbs": 12.0,
-              "g_fiber": 0.0,
-              "g_sugar": 13.0,
-              "g_protein": 8.0,
-              "mcg_vitamin_d": 2.9,
-              "mg_calcium": 310.0,
-              "mg_iron": 0.1,
-              "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0,
               "serving_size": "1 carton"
             },
             "Skim Chocolate Lactose Free Milk": {
@@ -4398,8 +4398,8 @@
         ],
         "fruit": [
           "Applesauce",
-          "Mixed Berry Applesauce",
-          "Fruit Juice"
+          "Fruit Juice",
+          "Mixed Berry Applesauce"
         ],
         "condiments": [],
         "milk": [
@@ -4658,24 +4658,6 @@
               "mg_vitamin_c": 10.0,
               "serving_size": "0.5 cups"
             },
-            "Mixed Berry Applesauce": {
-              "calories": 50.0,
-              "g_fat": 0.0,
-              "g_saturated_fat": 0.0,
-              "g_trans_fat": 0.0,
-              "mg_cholesterol": 0.0,
-              "mg_sodium": 0.0,
-              "g_carbs": 14.0,
-              "g_fiber": 1.0,
-              "g_sugar": 12.0,
-              "g_added_sugar": 0.0,
-              "g_protein": 0.0,
-              "mcg_vitamin_d": 0.0,
-              "mg_calcium": 10.0,
-              "mg_iron": 0.3,
-              "mg_potassium": 95.0,
-              "serving_size": "1 each"
-            },
             "Fruit Juice": {
               "calories": 70.0,
               "g_fat": 0.0,
@@ -4693,6 +4675,24 @@
               "mg_iron": 0.2,
               "mg_potassium": 170.0,
               "mg_vitamin_c": 36.0,
+              "serving_size": "1 each"
+            },
+            "Mixed Berry Applesauce": {
+              "calories": 50.0,
+              "g_fat": 0.0,
+              "g_saturated_fat": 0.0,
+              "g_trans_fat": 0.0,
+              "mg_cholesterol": 0.0,
+              "mg_sodium": 0.0,
+              "g_carbs": 14.0,
+              "g_fiber": 1.0,
+              "g_sugar": 12.0,
+              "g_added_sugar": 0.0,
+              "g_protein": 0.0,
+              "mcg_vitamin_d": 0.0,
+              "mg_calcium": 10.0,
+              "mg_iron": 0.3,
+              "mg_potassium": 95.0,
               "serving_size": "1 each"
             }
           },
