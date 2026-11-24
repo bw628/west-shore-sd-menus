@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T21:54:58.388450Z",
+  "generated_at": "2026-11-24T20:30:45.614950Z",
   "school": "Rossmoyne Primary School",
   "slug": "rossmoyne-elementary",
   "weeks": [
@@ -551,7 +551,10 @@
           "Baby Carrots"
         ],
         "fruit": [
-          "Fresh Banana"
+          "Fresh Apple Wedges",
+          "Fresh Orange",
+          "Fresh Grapes",
+          "Fresh Apple Slices"
         ],
         "condiments": [],
         "milk": [
@@ -934,22 +937,76 @@
             }
           },
           "fruit": {
-            "Fresh Banana": {
-              "calories": 70.0,
+            "Fresh Apple Wedges": {
+              "calories": 30.0,
               "g_fat": 0.0,
               "g_saturated_fat": 0.0,
               "g_trans_fat": 0.0,
               "mg_cholesterol": 0.0,
               "mg_sodium": 0.0,
-              "g_carbs": 18.0,
+              "g_carbs": 8.0,
+              "g_fiber": 1.0,
+              "g_sugar": 6.0,
+              "g_protein": 0.0,
+              "mcg_vitamin_d": 0.0,
+              "mg_calcium": 10.0,
+              "mg_iron": 0.1,
+              "mg_potassium": 65.0,
+              "mg_vitamin_c": 3.0,
+              "serving_size": "4 wedge"
+            },
+            "Fresh Orange": {
+              "calories": 45.0,
+              "g_fat": 0.0,
+              "g_saturated_fat": 0.0,
+              "g_trans_fat": 0.0,
+              "mg_cholesterol": 0.0,
+              "mg_sodium": 0.0,
+              "g_carbs": 12.0,
               "g_fiber": 2.0,
               "g_sugar": 9.0,
               "g_protein": 1.0,
               "mcg_vitamin_d": 0.0,
-              "mg_calcium": 0.0,
+              "mg_calcium": 40.0,
+              "mg_iron": 0.1,
+              "mg_potassium": 180.0,
+              "mg_vitamin_c": 53.0,
+              "serving_size": "1 each"
+            },
+            "Fresh Grapes": {
+              "calories": 60.0,
+              "g_fat": 0.0,
+              "g_saturated_fat": 0.0,
+              "g_trans_fat": 0.0,
+              "mg_cholesterol": 0.0,
+              "mg_sodium": 0.0,
+              "g_carbs": 15.0,
+              "g_fiber": 1.0,
+              "g_sugar": 14.0,
+              "g_protein": 1.0,
+              "mcg_vitamin_d": 0.0,
+              "mg_calcium": 10.0,
               "mg_iron": 0.2,
-              "mg_potassium": 280.0,
-              "mg_vitamin_c": 7.0,
+              "mg_potassium": 160.0,
+              "mg_vitamin_c": 3.0,
+              "serving_size": "0.5 cups"
+            },
+            "Fresh Apple Slices": {
+              "calories": 45.0,
+              "g_fat": 0.0,
+              "g_saturated_fat": 0.0,
+              "g_trans_fat": 0.0,
+              "mg_cholesterol": 0.0,
+              "mg_sodium": 0.0,
+              "g_carbs": 11.0,
+              "g_fiber": 2.0,
+              "g_sugar": 9.0,
+              "g_added_sugar": 0.0,
+              "g_protein": 0.0,
+              "mg_calcium": 20.0,
+              "mg_iron": 0.2,
+              "mg_potassium": 90.0,
+              "mg_vitamin_c": 58.0,
               "serving_size": "1 each"
             }
           },
