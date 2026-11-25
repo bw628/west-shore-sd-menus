@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T20:30:45.017800Z",
+  "generated_at": "2026-11-25T19:48:15.207713Z",
   "school": "Red Mill Primary School",
   "slug": "redmill-elementary",
   "weeks": [
@@ -1935,8 +1935,8 @@
         ],
         "milk": [
           "Chocolate Skim Milk",
-          "1% Milk",
           "1% Chocolate Milk",
+          "1% Milk",
           "1% Strawberry Milk",
           "1% Lactose Free Milk"
         ]
@@ -2416,23 +2416,6 @@
               "mg_potassium": 380.0,
               "serving_size": "1 carton"
             },
-            "1% Milk": {
-              "calories": 100.0,
-              "g_fat": 2.5,
-              "g_saturated_fat": 1.5,
-              "mg_cholesterol": 12.0,
-              "mg_sodium": 105.0,
-              "g_carbs": 12.0,
-              "g_fiber": 0.0,
-              "g_sugar": 13.0,
-              "g_protein": 8.0,
-              "mcg_vitamin_d": 2.9,
-              "mg_calcium": 310.0,
-              "mg_iron": 0.1,
-              "mg_potassium": 370.0,
-              "mg_vitamin_c": 0.0,
-              "serving_size": "1 carton"
-            },
             "1% Chocolate Milk": {
               "calories": 150.0,
               "g_fat": 2.5,
@@ -2449,6 +2432,23 @@
               "mg_calcium": 330.0,
               "mg_iron": 0.4,
               "mg_potassium": 380.0,
+              "serving_size": "1 carton"
+            },
+            "1% Milk": {
+              "calories": 100.0,
+              "g_fat": 2.5,
+              "g_saturated_fat": 1.5,
+              "mg_cholesterol": 12.0,
+              "mg_sodium": 105.0,
+              "g_carbs": 12.0,
+              "g_fiber": 0.0,
+              "g_sugar": 13.0,
+              "g_protein": 8.0,
+              "mcg_vitamin_d": 2.9,
+              "mg_calcium": 310.0,
+              "mg_iron": 0.1,
+              "mg_potassium": 370.0,
+              "mg_vitamin_c": 0.0,
               "serving_size": "1 carton"
             },
             "1% Strawberry Milk": {
